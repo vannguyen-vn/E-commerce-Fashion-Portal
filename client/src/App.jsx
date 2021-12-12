@@ -1,8 +1,12 @@
 import React from 'react';
+import { Button, Container } from 'react-bootstrap';
 
 const App = () => {
   return (
-    <h1>Hi, I am Van</h1>
+    <Container className="p-3">
+      <Button variant="primary">Button #1</Button>
+      <Button variant="primary">Button #2</Button>
+    </Container>
   )
 }
 

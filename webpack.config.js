@@ -40,6 +40,13 @@ module.exports = function (_env, argv) {
           ]
         },
         {
+          test: /\.s[ac]ss$/i,
+          use: [
+            isProduction ? MiniCssExtractPlugin.loader : "style-loader",
+            "css-loader", "sass-loader"
+          ]
+        },
+        {
           test: /\.(png|jpg|gif)$/i,
           use: {
             loader: "url-loader",
@@ -63,7 +70,7 @@ module.exports = function (_env, argv) {
       ]
     },
     resolve: {
-      extensions: [".js", ".jsx"]
+      extensions: [".js", ".jsx", ".scss"]
     },
     plugins: [
       isProduction &&
