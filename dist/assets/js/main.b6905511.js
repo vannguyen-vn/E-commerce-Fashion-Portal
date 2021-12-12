@@ -1,1 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[0],{8:function(n,e,o){"use strict";o.r(e);var t,r=o(0),i=o.n(r),a=(o(1),o(3)),c=function(){return t||(t=i()("h1",{},void 0,"Hi, I am Van"))};o.n(a).a.render(i()(c,{}),document.getElementById("root"))}},[[8,1,5,4,6,2,3]]]);
