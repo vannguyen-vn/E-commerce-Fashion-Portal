@@ -1,0 +1,19 @@
+header {
+  position: relative;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--bs-gray-200);
+
+  .row {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+
+  .logo {
+    text-align: center;
+
+    img {
+      max-width: 150px;
+    }
+  }
+}

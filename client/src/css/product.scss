@@ -1,0 +1,20 @@
+.card {
+  border: none;
+  text-align: center;
+  font-size: 0.8rem;
+
+  .card-img-top {
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, .125);
+    border-radius: 0.25rem;
+  }
+
+  .name {
+    font-size: 0.8rem;
+  }
+
+  .price {
+    color: var(--bs-gray-500);
+  }
+
+}
