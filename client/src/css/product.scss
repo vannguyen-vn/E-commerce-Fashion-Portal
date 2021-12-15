@@ -1,20 +1,39 @@
-.card {
-  border: none;
-  text-align: center;
-  font-size: 0.8rem;
-
-  .card-img-top {
-    background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, .125);
-    border-radius: 0.25rem;
+#featureProducts {
+  .col {
+    width: calc((100% - 4* var(--bs-gutter-x))/5);
   }
 
-  .name {
+  .card {
+    border: none;
+    text-align: center;
     font-size: 0.8rem;
-  }
 
-  .price {
-    color: var(--bs-gray-500);
-  }
+    .thumb {
+      background-color: var(--bs-white);
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, .125);
+      border-radius: 0.25rem;
+      height: 250px;
+      width: 100%;
+      overflow: hidden;
 
+      img {
+        width: auto;
+        height: 100%;
+      }
+    }
+
+    .name {
+      font-size: 0.8rem;
+    }
+
+    .price {
+      color: var(--bs-gray-500);
+      margin-top: 5px;
+
+      &:before {
+        content: '$';
+      }
+    }
+  }
 }
