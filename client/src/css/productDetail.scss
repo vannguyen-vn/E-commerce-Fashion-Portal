@@ -1,0 +1,21 @@
+.productDetail {
+  width: 100%;
+
+  .rb {
+    background-color: var(--bs-pink);
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    font-size: 80%;
+
+    a {
+      text-decoration: underline;
+      font-weight: 500;
+
+      &:hover {
+        color: var(--bs-pink-dark);
+      }
+    }
+
+  }
+}

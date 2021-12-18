@@ -22,7 +22,7 @@ var AtelierAPI = (method, endpoint, params = null, data = null) => {
 };
 
 app.get('/products', (req, res) => {
-  AtelierAPI('GET', '/products', req.query)
+  AtelierAPI('GET', '/products', { page: 1, count: 20 })
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });

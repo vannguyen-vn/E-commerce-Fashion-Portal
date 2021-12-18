@@ -1,6 +1,7 @@
 #featureProducts {
   .col {
     width: calc((100% - 4* var(--bs-gutter-x))/5);
+    flex: none;
   }
 
   .card {

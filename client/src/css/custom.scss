@@ -13,7 +13,10 @@ li {
 :root {
   --bs-white: #FFF;
   --bs-gray: #333;
+  --bs-black: #000;
   --bs-gray-500: #808080;
+  --bs-pink: #f9ece7;
+  --bs-pink-dark: #ff6363;
   --bs-font-sans-serif: 'Inter', sans-serif;
 }
 
@@ -24,7 +27,8 @@ body {
 }
 
 a {
-  color: var(--bs-blue);
+  color: var(--bs-black);
+  text-decoration: none;
 }
 
 .container {

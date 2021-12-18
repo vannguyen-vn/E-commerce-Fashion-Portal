@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import { InputGroup, FormControl, Button, Container, Col, Row } from 'react-bootstrap'
 
 const Header = () => {
@@ -7,7 +8,7 @@ const Header = () => {
       <Container>
         <Row  >
           <Col md={4} className="logo">
-            <img src='/static/logo.png' />
+            <Link to="/"><img src='/static/logo.png' /></Link>
           </Col>
           <Col md={{ span: 4, offset: 4 }} className='search'>
             <InputGroup className="">

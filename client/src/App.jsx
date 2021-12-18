@@ -4,7 +4,7 @@ import Banner from './components/Banner';
 import ListProduct from './components/ListProduct';
 import Testimonial from './components/Testimonial';
 import axios from 'axios';
-import ProductsProvider from './components/ProductsContext';
+// import ProductsProvider from './components/ProductsContext';
 
 // export const ProductsContext = createContext([{
 //   productList: [],
@@ -45,29 +45,28 @@ const App = () => {
   //     .catch(err => console.log(`Product ${productId} err`, err))
   // }, [productId]);
 
-  const updateProduct = (productList, product, styles, related) => {
-    setProducts(Object.assign({}, {
-      productList: productList,
-      product: product,
-      styles: styles,
-      related: related
-    }));
+  // const updateProduct = (productList, product, styles, related) => {
+  //   setProducts(Object.assign({}, {
+  //     productList: productList,
+  //     product: product,
+  //     styles: styles,
+  //     related: related
+  //   }));
 
-  }
+  // }
 
-  const updateProductId = (id) => {
-    setCurrentInfo({
-      productId: id
-    })
-  }
+  // const updateProductId = (id) => {
+  //   setCurrentInfo({
+  //     productId: id
+  //   })
+  // }
 
   return (
-    <ProductsProvider >
+    <>
       <Header />
       <Banner />
       <ListProduct />
-      <Testimonial />
-    </ProductsProvider>
+      <Testimonial /></>
   )
 }
 
