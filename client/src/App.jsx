@@ -4,68 +4,56 @@ import Banner from './components/Banner';
 import ListProduct from './components/ListProduct';
 import Testimonial from './components/Testimonial';
 import axios from 'axios';
-// import ProductsProvider from './components/ProductsContext';
-
-// export const ProductsContext = createContext([{
-//   productList: [],
-//   product: {},
-//   styles: {},
-//   related: [],
-//   productId: '41032',
-// }, (obj) => obj]);
 
 const App = () => {
-  // const [products, setProducts] = useContext(ProductsContext);
-  // const productId = products.productId;
+  const [products, setProducts] = useState([]);
+  // const [productId, setProductId] = useState('40344');
+  const [product, setProduct] = useState({})
 
+  useEffect(() => {
+    getProductList();
+  }, []);
 
-  // useEffect(() => {
-  //   axios.get('/products')
-  //     .then((resultProductList) => {
+  const getProductList = () => {
+    let result = [];
+    axios.get('/products', { page: 1, count: 20 })
+      .then((resultProductList) => {
 
-  //     })
+        const productListId = resultProductList.data.map(pro => pro.id);
+        productListId.map((productId) => {
+          result.push(getProduct(productId))
+        })
+        console.log(result);
+        return result;
+      })
 
-  //   axios.get(`/products/${productId}`)
-  //     .then((resultProduct) => {
-  //       axios.get(`/products/${productId}/styles`)
-  //         .then((resultStyles) => {
-  //           console.log(resultStyles)
-  //           axios.get(`/products/${productId}/related`)
-  //             .then((resultRelated) => {
-  //               updateProduct(
-  //                 resultProductList.data,
-  //                 resultProduct.data,
-  //                 resultStyles.data,
-  //                 resultRelated.data
-  //               )
-  //             })
-  //         })
-  //     })
+      .then(axios.spread(function (result) {
+        console.log(result);
+      }))
 
-  //     .catch(err => console.log(`Product ${productId} err`, err))
-  // }, [productId]);
+      // .then(result => {
+      //     Promise
+      //       .all(result)
+      //       .then(values => console.log(values));
+      //   })
+      .catch(err => console.log('Fetching product list err', err))
+  }
 
-  // const updateProduct = (productList, product, styles, related) => {
-  //   setProducts(Object.assign({}, {
-  //     productList: productList,
-  //     product: product,
-  //     styles: styles,
-  //     related: related
-  //   }));
+  const getProduct = (productId) => {
+    const overview = axios.get(`/products/${productId}`);
+    const styles = axios.get(`/products/${productId}/styles`);
+    const related = axios.get(`/products/${productId}/related`);
 
-  // }
-
-  // const updateProductId = (id) => {
-  //   setCurrentInfo({
-  //     productId: id
-  //   })
-  // }
+    return axios.all([overview, styles, related]).then(axios.spread(function (res1, res2, res3) {
+      return (res1, res2, res3);
+    }))
+  }
 
   return (
     <>
       <Header />
       <Banner />
-      <ListProduct />
+      <ListProduct productList={products} />
       <Testimonial /></>
   )
 }

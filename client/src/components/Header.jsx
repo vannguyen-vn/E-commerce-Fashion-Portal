@@ -8,7 +8,7 @@ const Header = () => {
       <Container>
         <Row  >
           <Col md={4} className="logo">
-            <Link to="/"><img src='/static/logo.png' /></Link>
+            <img src='/static/logo.png' />
           </Col>
           <Col md={{ span: 4, offset: 4 }} className='search'>
             <InputGroup className="">

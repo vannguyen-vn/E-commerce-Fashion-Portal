@@ -6,9 +6,9 @@ const ProductCard = ({ product, pic }) => {
 
   return (
     <Card>
-      <div className='thumb'>
+      {/* <div className='thumb'>
         <img src={pic} />
-      </div>
+      </div> */}
       <Card.Body>
         <h4 className="name">{product.name}</h4>
         <div className="slogan">{product.slogan}</div>
