@@ -20,16 +20,14 @@ const ListProduct = ({ productList }) => {
       <Container>
         <h1 className="title">Featured Products</h1>
         <Row>
-          {/* {console.log(productList)} */}
-          {/* {productList.map((product, index) => (
-            <Col>
-              <ProductCard
-                key={product.id}
-                product={product}
-              // pic={FeaturedPicture[index]}
-              />
-            </Col>
-          ))} */}
+
+          {productList.map((product, index) => (
+            <ProductCard
+              key={index}
+              product={product}
+            // pic={FeaturedPicture[index]}
+            />
+          ))}
         </Row>
       </Container>
     </div>

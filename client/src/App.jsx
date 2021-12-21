@@ -8,7 +8,8 @@ import axios from 'axios';
 const App = () => {
   const [products, setProducts] = useState([]);
   // const [productId, setProductId] = useState('40344');
-  const [product, setProduct] = useState({})
+  // const [product, setProduct] = useState({})
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getProductList();
@@ -16,37 +17,23 @@ const App = () => {
 
   const getProductList = () => {
     let result = [];
-    axios.get('/products', { page: 1, count: 20 })
+    axios.get('/products', { page: 1, count: 4 })
       .then((resultProductList) => {
-
         const productListId = resultProductList.data.map(pro => pro.id);
-        productListId.map((productId) => {
-          result.push(getProduct(productId))
-        })
-        console.log(result);
-        return result;
+        productListId.map((productId) => result.push(getProduct(productId)))
+        return setProducts(result);
       })
 
-      .then(axios.spread(function (result) {
-        console.log(result);
-      }))
-
-      // .then(result => {
-      //     Promise
-      //       .all(result)
-      //       .then(values => console.log(values));
-      //   })
       .catch(err => console.log('Fetching product list err', err))
   }
 
   const getProduct = (productId) => {
+    const result = [];
     const overview = axios.get(`/products/${productId}`);
     const styles = axios.get(`/products/${productId}/styles`);
     const related = axios.get(`/products/${productId}/related`);
-
-    return axios.all([overview, styles, related]).then(axios.spread(function (res1, res2, res3) {
-      return (res1, res2, res3);
-    }))
+    axios.all([overview, styles, related])
+      .then(values => { 'overview': values[0].data, 'styles': values[1].data, 'related': values[2].data })
   }
 
   return (
