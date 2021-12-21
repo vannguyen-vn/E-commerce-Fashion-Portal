@@ -19,8 +19,7 @@ const ListProduct = ({ productList }) => {
     <div id="featureProducts">
       <Container>
         <h1 className="title">Featured Products</h1>
-        <Row>
-
+        <div className='productList'>
           {productList.map((product, index) => (
             <ProductCard
               key={index}
@@ -28,7 +27,7 @@ const ListProduct = ({ productList }) => {
             // pic={FeaturedPicture[index]}
             />
           ))}
-        </Row>
+        </div>
       </Container>
     </div>
   )

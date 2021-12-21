@@ -18,23 +18,18 @@ const App = () => {
   const getProductList = () => {
     let result = [];
     axios.get('/products', { page: 1, count: 4 })
-      .then((resultProductList) => {
-        const productListId = resultProductList.data.map(pro => pro.id);
-        productListId.map((productId) => result.push(getProduct(productId)))
-        return setProducts(result);
-      })
-
+      .then((resultProductList) => setProducts(resultProductList.data))
       .catch(err => console.log('Fetching product list err', err))
   }
 
-  const getProduct = (productId) => {
-    const result = [];
-    const overview = axios.get(`/products/${productId}`);
-    const styles = axios.get(`/products/${productId}/styles`);
-    const related = axios.get(`/products/${productId}/related`);
-    axios.all([overview, styles, related])
-      .then(values => { 'overview': values[0].data, 'styles': values[1].data, 'related': values[2].data })
-  }
+  // const getProduct = (productId) => {
+  //   const result = [];
+  //   const overview = axios.get(`/products/${productId}`);
+  //   const styles = axios.get(`/products/${productId}/styles`);
+  //   const related = axios.get(`/products/${productId}/related`);
+  //   axios.all([overview, styles, related])
+  //     .then(values => { 'overview': values[0].data, 'styles': values[1].data, 'related': values[2].data })
+  // }
 
   return (
     <>

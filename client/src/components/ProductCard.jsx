@@ -6,19 +6,9 @@ const ProductCard = ({ product, pic }) => {
 
   return (
     <Col>
-      <Card>
-        <div className='thumb'>
-          {console.log(product)}
-
-          {console.log(Array.isArray(product))}
-          {/* <img src={pic} /> */}
-        </div>
-        <Card.Body>
-          <h4 className="name">{product}</h4>
-          {/* <div className="slogan">{product.slogan}</div>
-          <p className="price">{product.default_price}</p> */}
-        </Card.Body>
-      </Card>
+      <h4 className="name">{product.name}</h4>
+      <div className="slogan">{product.slogan}</div>
+      <p className="price">{product.default_price}</p>
     </Col>
   );
 }
