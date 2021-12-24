@@ -32,6 +32,9 @@ a:hover {
   text-decoration: none;
 }
 
+li {
+  list-style: none;
+}
 
 .container {
   max-width: 1200px;
@@ -61,6 +64,10 @@ h1 {
     right: 0;
     margin: auto;
   }
+}
+
+h2 {
+  font-size: 2rem;
 }
 
 h4 {
