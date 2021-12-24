@@ -6,8 +6,7 @@
     justify-content: space-between;
   }
 
-
-  .col {
+  .productDetail {
     width: calc(100%/4 - 15px);
     flex: none;
     background-color: var(--bs-white);
@@ -25,7 +24,9 @@
       transform: scale(1.04);
     }
 
+  }
 
+  .col {
 
     .name {
       font-size: 0.8rem;

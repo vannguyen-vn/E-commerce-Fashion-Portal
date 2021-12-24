@@ -26,10 +26,12 @@ body {
   line-height: 120%;
 }
 
-a {
+a,
+a:hover {
   color: var(--bs-black);
   text-decoration: none;
 }
+
 
 .container {
   max-width: 1200px;
