@@ -22,51 +22,13 @@
     margin: 30px auto;
   }
 
-  .gallery {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    height: 400px;
-    opacity: 1;
-    transition: opacity 0.3s ease-in-out;
-    position: relative;
+  .carousel-slider {
+    max-height: 400px;
+  }
 
-    &_img {
-      width: 100%;
-      height: 100%;
-      text-align: center;
-
-      img {
-        height: 100%;
-        width: auto;
-        max-height: 400px;
-        max-width: 100%;
-      }
-    }
-
-    &_selected_style {
-      // display: block;
-      // // flex-wrap: wrap;
-      // position: absolute;
-      // left: 0px;
-      // top: 0px;
-      // width: 40px;
-      // height: 100%;
-      // overflow: hidden;
-      // margin: 10px;
-
-      // &_item {
-      //   margin-right: auto;
-      //   margin-bottom: 5px;
-      //   width: 100%;
-      //   height: 50px;
-      //   overflow: hidden;
-      // }
-
-      // img {
-      //   width: 100%;
-      //   height: 100%;
-      // }
+  .carousel {
+    .thumb img {
+      max-height: 50px;
     }
   }
 

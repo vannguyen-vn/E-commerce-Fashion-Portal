@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
-// import ImageGallary from './ImageGallary'
 
 const Overview = ({ product }) => {
   const [active, setActive] = useState(0);
@@ -13,17 +12,17 @@ const Overview = ({ product }) => {
 
   return (
     <section className='overview'>
+      {console.log(product.styles)}
       <Row>
         <Col md={8}>
           <div className='gallery'>
-            <div className='gallery_img'><img src={product.styles ? product.styles[active].photos[active].thumbnail_url : ''} /></div>
-            <Carousel className='gallery_selected_style' autoPlay axis='vertical' infiniteLoop showStatus='false'>
+            <Carousel className='gallery_selected_style' autoPlay axis='horizontal' infiniteLoop showStatus={false}>
               {product.styles ? product.styles[active].photos.map((photos, index) =>
                 <div
                   key={index}
                   className={index === active ? 'gallery_selected_style_item active' : 'gallery_selected_style_item'}
                 >
-                  <img src={photos.thumbnail_url} />
+                  <img src={photos.url} />
                 </div>
               ) : ''}
             </Carousel>
@@ -36,8 +35,13 @@ const Overview = ({ product }) => {
             </div>
             <div className='info_cat'>{product.overview.category}</div>
             <h2 className='info_name'>{product.overview.name}</h2>
-            <div className='info_price'>${product.styles ? product.styles[active].original_price : product.overview.default_price}</div>
-            <p className='info_selected_style'><strong>Style > </strong><span>{product.styles ? product.styles[active].name : ''}</span></p>
+            <div className='info_price'>
+              ${product.styles ? product.styles[active].original_price : product.overview.default_price}
+            </div>
+            <p className='info_selected_style'>
+              <strong>Style > </strong>
+              <span>{product.styles ? product.styles[active].name : ''}</span>
+            </p>
             <ul className='styles_gallery'>
               {product.styles ? product.styles.map((photos, index) =>
                 <li
@@ -45,7 +49,11 @@ const Overview = ({ product }) => {
                   className={index === active ? 'styles_gallery_item active' : 'styles_gallery_item'}
                   alt={product.overview.name}
                 >
-                  <img src={photos.photos[0].thumbnail_url} className='styles_gallery_img' onClick={handleClick} data-index={index}
+                  <img
+                    src={photos.photos[0].thumbnail_url}
+                    className='styles_gallery_img'
+                    onClick={handleClick}
+                    data-index={index}
                   />
                 </li>
               ) : ''}
