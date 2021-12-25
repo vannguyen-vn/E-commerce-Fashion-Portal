@@ -4,7 +4,6 @@ import { Carousel } from 'react-responsive-carousel';
 
 const Overview = ({ product }) => {
   const [active, setActive] = useState(0);
-  const [currentStyle, setCurrentStyle] = useState()
 
   const handleClick = (e) => {
     setActive(+e.target.dataset.index);

@@ -8,7 +8,6 @@ const ListProduct = () => {
 
   const { products } = useContext(ProductsContext);
 
-
   return (
     <div id="featureProducts">
       <Banner />
