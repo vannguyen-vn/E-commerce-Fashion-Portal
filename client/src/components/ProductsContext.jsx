@@ -6,15 +6,13 @@ export const ProductsContext = createContext();
 export const ProductsProvider = props => {
   const [products, setProducts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(true);
+  const [related, setRelated] = useState([]);
   const [product, setProduct] = useState({
     overview: {},
-    related: [],
     features: [],
     picture: '',
     styles: '',
-    salePrice: '',
   });
-
 
   useEffect(() => {
     getProductList();
@@ -27,6 +25,7 @@ export const ProductsProvider = props => {
         setIsLoaded(false)
         setProducts(resultProductList.data)
       })
+
       .catch(err => {
         setIsLoaded(true);
         console.log('Fetching product list err', err)
@@ -34,37 +33,43 @@ export const ProductsProvider = props => {
   }
 
   const getProduct = (productId) => {
+    let isApiSubscribed = true;
+
     const overview = axios.get(`/products/${productId}`);
     const styles = axios.get(`/products/${productId}/styles`);
-    // const related = axios.get(`/products/${productId}/related`);
 
     Promise.all([overview, styles])
-      .then(values =>
-        setProduct(
-          {
+      .then(values => {
+        if (isApiSubscribed) {
+          console.log(values[1].data.results)
+
+          setProduct({
             overview: values[0].data,
             styles: values[1].data.results,
-            // related: values[2].data,
             features: values[0].data.features,
           })
-      )
+        }
+      })
 
       .catch((error) => {
         console.log('Error fetching product styles', error);
       });
+
+    return () => {
+      isApiSubscribed = false;
+    }
   }
 
-  const getRelatedProducts = (ProductId) => {
-    axios
-      .get(`/products/${productId}/related`)
-      .then(relatedProducts => setProduct(
-        related: relatedProducts.data,
-      ))
-      .catch(error => console.log('Error fetching related Products', error))
+  const getRelated = (productId) => {
+    axios.get(`/products/${productId}/related`)
+      .then(result => setRelated(result.data))
+      .catch((error) => {
+        console.log('Error fetching related product ', error);
+      });
   }
 
   return (
-    <ProductsContext.Provider value={{ products, product, getProduct }} >
+    <ProductsContext.Provider value={{ getProductList, getProduct, getRelated, products, related, product }} >
       {props.children}
     </ProductsContext.Provider>
   );

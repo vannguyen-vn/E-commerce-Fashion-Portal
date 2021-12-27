@@ -8,10 +8,10 @@ const Overview = ({ product }) => {
   const handleClick = (e) => {
     setActive(+e.target.dataset.index);
   }
+  const sale = { textDecoration: product.styles && product.styles[active].sale_price !== null ? 'line-through' : 'none' };
 
   return (
     <section className='overview'>
-      {console.log(product.styles)}
       <Row>
         <Col md={8}>
           <div className='gallery'>
@@ -34,9 +34,15 @@ const Overview = ({ product }) => {
             </div>
             <div className='info_cat'>{product.overview.category}</div>
             <h2 className='info_name'>{product.overview.name}</h2>
-            <div className='info_price'>
-              ${product.styles ? product.styles[active].original_price : product.overview.default_price}
-            </div>
+            <p className='info_price'>
+              <span style={sale} className={product.styles && product.styles[active].sale_price !== null ? 'red' : ''}
+              > ${
+                  product.styles ? Number(product.styles[active].original_price) : ''}</span>
+              <span className='salePrice'>
+                {product.styles && product.styles[active].sale_price !== null ? ' $' + Number(product.styles[active].sale_price) : ''}
+              </span>
+            </p>
+
             <p className='info_selected_style'>
               <strong>Style > </strong>
               <span>{product.styles ? product.styles[active].name : ''}</span>

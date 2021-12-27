@@ -1,29 +1,27 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
+import Card from './Card';
+import { ProductsContext } from './ProductsContext'
+import axios from 'axios';
 
-const RelatedProducts = ({ product }) => {
+const RelatedProducts = ({ productId }) => {
+
+  const { getRelated, related } = useContext(ProductsContext);
+  const [relatedPro, setRelatedPro] = useState({})
+
+  useEffect(() => {
+    getRelated(productId);
+  }, [productId])
 
   return (
     <section className='related'>
-      {console.log(product.related)}
-      {/* <Carousel> */}
-      {product.related ? product.related.map((item) => (
-        <div className='related_item' key={item}>
-          <div className='realated_thumb'><img src='' /></div>
-          <div className='realated_cat'>
-            {product.overview.category}
-          </div>
-          <h3 className='realated_name'>
-            {/* {product.overview.name} */}
-          </h3>
-          <div className='realated_price'>
-            {/* ${product.styles ? product.styles[active].original_price : product.overview.default_price} */}
-          </div>
-        </div>
-      )) : ''}
-
-      {/* </Carousel> */}
+      {related.map((productId) => (
+        <Card
+          productId={productId}
+          key={productId}
+        />
+      ))}
     </section>
   )
 }

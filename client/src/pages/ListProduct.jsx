@@ -5,11 +5,11 @@ import { ProductsContext } from '../components/ProductsContext';
 import Banner from '../components/Banner';
 
 const ListProduct = () => {
-
   const { products } = useContext(ProductsContext);
 
   return (
     <div id="featureProducts">
+
       <Banner />
       <Container>
         <h1 className="title">Featured Products</h1>

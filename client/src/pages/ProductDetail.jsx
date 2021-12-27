@@ -10,20 +10,24 @@ import axios from 'axios';
 const ProductDetail = () => {
   const { id } = useParams();
   const productId = id;
-  const { product, getProduct } = useContext(ProductsContext);
+  const { product, getProduct, getRelated, related } = useContext(ProductsContext);
 
   useEffect(() => {
-    getProduct(productId);
+    getDetail();
   }, [productId]);
 
-  return (
+  const getDetail = () => {
+    let product1 = getProduct(productId);
+  }
 
+  return (
     <div className='productDetail'>
       <div className='rb'><strong>Buy now, pay later. No Interest, ever!</strong><br></br>Introducing Afterpay! <a href=''>Learn More</a> About Afterpay</div>
       <Container>
-        <Overview product={product} />
+        <Overview
+          product={product} />
         <h1 className="title">Realated Products</h1>
-        <RelatedProducts product={product} />
+        <RelatedProducts productId={productId} />
       </Container>
     </div>
   )
