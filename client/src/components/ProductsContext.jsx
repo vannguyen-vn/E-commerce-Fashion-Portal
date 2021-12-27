@@ -41,7 +41,6 @@ export const ProductsProvider = props => {
     Promise.all([overview, styles])
       .then(values => {
         if (isApiSubscribed) {
-          console.log(values[1].data.results)
 
           setProduct({
             overview: values[0].data,

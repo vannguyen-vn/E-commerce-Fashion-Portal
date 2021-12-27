@@ -18,6 +18,7 @@ const Card = ({ productId }) => {
     Promise.all([overview, styles])
       .then(values => {
         if (isApiSubscribed) {
+          console.log(values[1].data.results)
 
           setRelatedProduct({
             overview: values[0].data,
@@ -36,13 +37,13 @@ const Card = ({ productId }) => {
   }, [])
 
   return (
-    <div className='card'>
-      <div className='card_thumb'>
-        <img src={relatedProduct.styles ? relatedProduct.styles[0].photos[0].thumbnail_url : '/static/default-placeholder.png'} />
+    <div className='card text-center'>
+      <div className='thumb'><img src={relatedProduct.styles && relatedProduct.styles[0].photos[0].thumbnail_url !== null ? relatedProduct.styles[0].photos[0].thumbnail_url : '/static/default-placeholder.png'} className="card-img-top" /></div>
+      <div className="card-body">
+        {/* <div className='card-text'>{relatedProduct.overview.category}</div> */}
+        <h5 className="card-title">{relatedProduct.overview.name}</h5>
+        <p className='card-text'>${relatedProduct.overview.default_price}</p>
       </div>
-      <div className='card_cat'>{relatedProduct.overview.category}</div>
-      <h2 className='card_name'>{relatedProduct.overview.name}</h2>
-      <p className='card_price'><span>{relatedProduct.overview.default_price}</span></p>
     </div>
   )
 }
