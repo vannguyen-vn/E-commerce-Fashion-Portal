@@ -1,6 +1,6 @@
 .related .card {
   margin: 0px 7px;
-  min-height: 300px;
+  min-height: 100%;
   transition: opacity 0.4s ease-in-out;
   cursor: pointer;
 
@@ -13,7 +13,7 @@
   }
 
   .thumb {
-    height: 170px;
+    height: 200px;
     overflow: hidden;
   }
 

@@ -4,7 +4,7 @@ import { Container, Col, Row } from 'react-bootstrap';
 import { ProductsContext } from '../components/ProductsContext';
 import Overview from '../components/Overview';
 import RelatedProducts from '../components/RelatedProducts';
-
+import RatingReview from "../components/RatingReview";
 import axios from 'axios';
 
 const ProductDetail = () => {
@@ -28,6 +28,7 @@ const ProductDetail = () => {
           product={product} />
         <h1 className="title">Realated Products</h1>
         <RelatedProducts productId={productId} />
+        <RatingReview />
       </Container>
     </div>
   )
