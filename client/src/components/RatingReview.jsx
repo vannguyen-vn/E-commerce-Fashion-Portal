@@ -31,7 +31,6 @@ const RatingReview = ({ productId }) => {
           <div className='reviews'>
             {eachRating ?
               eachRating.map((rating, index) => {
-                console.log(rating)
                 if (Number(rating)) {
                   return (
                     <div className='total-review' key={index}>

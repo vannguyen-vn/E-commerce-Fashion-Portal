@@ -26,11 +26,11 @@ const calEachRating = (obj) => {
     Object.keys(obj).forEach((rating) => {
       resTotal += Number(obj[rating])
     });
-    for (let i = 1; i <= 5; i++) {
-      resEach.push((obj[i] * 100 / resTotal).toFixed(1))
-    };
+
+    Object.keys(obj).forEach((rating) => {
+      resEach.push(((obj[rating]) * 100 / resTotal).toFixed(1))
+    });
   }
-  console.log(resEach)
   return resEach;
 }
 
