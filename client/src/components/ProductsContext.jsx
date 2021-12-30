@@ -7,6 +7,10 @@ export const ProductsProvider = props => {
   const [products, setProducts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(true);
   const [related, setRelated] = useState([]);
+  const [reviews, setReviews] = useState([]);
+  const [reviewsMeta, setReviewsMeta] = useState({});
+
+  const [ratings, setRatings] = useState({})
   const [product, setProduct] = useState({
     overview: {},
     features: [],
@@ -67,8 +71,24 @@ export const ProductsProvider = props => {
       });
   }
 
+  const getReviews = (productId) => {
+    axios.get(`/reviews/${productId}`)
+      .then(result => setReviews(result.data.results))
+      .catch((error) => {
+        console.log('Error fetching related product ', error);
+      });
+  }
+
+  const getReviewsMeta = (productId) => {
+    axios.get(`/reviews/meta/${productId}/`)
+      .then(result => setReviewsMeta(result.data.ratings))
+      .catch((error) => {
+        console.log('Error fetching related product ', error);
+      });
+  }
+
   return (
-    <ProductsContext.Provider value={{ getProductList, getProduct, getRelated, products, related, product }} >
+    <ProductsContext.Provider value={{ getProductList, getProduct, getRelated, products, related, product, getReviews, getReviewsMeta, reviews, reviewsMeta }} >
       {props.children}
     </ProductsContext.Provider>
   );

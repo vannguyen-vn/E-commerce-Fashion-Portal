@@ -10,7 +10,7 @@ import axios from 'axios';
 const ProductDetail = () => {
   const { id } = useParams();
   const productId = id;
-  const { product, getProduct, getRelated, related } = useContext(ProductsContext);
+  const { product, getProduct } = useContext(ProductsContext);
 
   useEffect(() => {
     getDetail();
@@ -28,7 +28,7 @@ const ProductDetail = () => {
           product={product} />
         <h1 className="title">Realated Products</h1>
         <RelatedProducts productId={productId} />
-        <RatingReview />
+        <RatingReview productId={productId} />
       </Container>
     </div>
   )

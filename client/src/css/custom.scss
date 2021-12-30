@@ -15,9 +15,11 @@ li {
   --bs-gray: #333;
   --bs-black: #000;
   --bs-gray-500: #808080;
+  --bs-gray-400: #dfdede;
   --bs-pink: #f9ece7;
   --bs-pink-dark: #ff6363;
   --bs-font-sans-serif: 'Inter', sans-serif;
+  --bs-red: #ff0000;
 }
 
 body {
@@ -68,6 +70,11 @@ h1 {
 
 h2 {
   font-size: 2rem;
+}
+
+h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
 }
 
 h4 {

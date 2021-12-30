@@ -47,6 +47,19 @@ app.get('/products/:id/related', (req, res) => {
 });
 
 
+app.get('/reviews/:product_id', (req, res) => {
+  AtelierAPI('GET', `/reviews/?sort=newest&product_id=${req.params.product_id}&count=50`)
+    .then(response => res.send(response.data))
+    .catch(err => console.log('server err', err));
+});
+
+app.get('/reviews/meta/:product_id', (req, res) => {
+  AtelierAPI('GET', `/reviews/meta/?sort=newest&product_id=${req.params.product_id
+    } & count=100`)
+    .then(response => res.send(response.data))
+    .catch(err => console.log('server err', err));
+});
+
 
 app.listen(PORT, () => {
   console.log('Listening on port: ', PORT);

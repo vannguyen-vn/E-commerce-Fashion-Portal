@@ -1,45 +1,59 @@
-import React from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Row, Col, ProgressBar, Table } from 'react-bootstrap';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { ProductsContext } from './ProductsContext';
+import { avgRating, calEachRating } from './helper/avgRating.js';
+import ReviewCard from './ReviewCard'
 
+import axios from 'axios';
 
-const RatingReview = () => {
+const RatingReview = ({ productId }) => {
+  const { getReviews, reviews, reviewsMeta, getReviewsMeta } = useContext(ProductsContext);
+  let convertedRating = avgRating(reviewsMeta) / 5 * 100;
+  let eachRating = calEachRating(reviewsMeta);
+
+  useEffect(() => {
+    getReviews(productId);
+    getReviewsMeta(productId)
+  }, [productId])
+
   return (
     <section className='RatingReview'>
+      <h3>Customer Reviews</h3>
       <Row>
         <Col md={4}>
-          <h4>Customer Reviewa</h4>
-          <div className='average-star-rating'>3.9</div>
-          <Table>
-            <thead>
-              <tr>
-                <td>5 star</td>
-                <td>
-                  <ProgressBar striped now={55} />
-                </td>
-                <td> 55%</td>
-              </tr>
-            </thead>
-          </Table>
-        </Col>
-        <Col md={8}>
-          <h4 className='total-review-count'>8,033 reviewas, sortred</h4>
-          <div className='review'>
-            <div className='review-card'>
-              <div className='review-rating'>
-                <Row className='review-star-rating'>
-                  <Col md={8} className='review-name'>5 stars</Col>
-                  <Col md={4} >
-                    <span className='review-name'>shortandsweeet</span>
-                    <span className='review-date'>January 1. 2019</span>
-                  </Col>
-                </Row>
-                <p className='review-summary'>I'm enjoying wearing these shades</p>
-                <p className='review-body'>Comfortable and practical.</p>
-                <div className='review-pictures'>Arrays pictures</div>
-              </div>
+          <div className='average-star-rating'>
+            <div className='avgRating'>{avgRating(reviewsMeta)}</div>
+            <div className='stars-outer'>
+              <div className='stars-inner' style={{ width: `${convertedRating}%` }}></div>
             </div>
           </div>
+          <div className='reviews'>
+            {eachRating ?
+              eachRating.map((rating, index) => {
+                console.log(rating)
+                if (Number(rating)) {
+                  return (
+                    <div className='total-review' key={index}>
+                      <div className='star'>{index + 1} star</div>
+                      <ProgressBar now={rating} max={100} />
+                      <div className='percent'>{`${rating}%`}</div>
+                    </div>
+                  )
+                }
+              }) : ''
+            }
+          </div>
         </Col>
+        <Col md={8}>
+          {reviews ? reviews.map(review => (
+            <ReviewCard
+              key={review.review_id}
+              review={review}
+            />
+          )) : ''}
+        </Col>
+
       </Row>
     </section>
   )

@@ -4,7 +4,6 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Link } from 'react-router-dom';
 
-
 import Card from './Card';
 import { ProductsContext } from './ProductsContext'
 import axios from 'axios';
@@ -32,7 +31,6 @@ const responsive = {
 const RelatedProducts = ({ productId }) => {
 
   const { getRelated, related } = useContext(ProductsContext);
-  const [relatedPro, setRelatedPro] = useState({})
 
   useEffect(() => {
     getRelated(productId);

@@ -1,0 +1,118 @@
+.review {
+  border-bottom: 1px solid var(--bs-gray-400);
+  padding-bottom: 20px;
+  margin-bottom: 30px;
+
+  >div {
+    margin-bottom: 10px;
+  }
+
+  &-summary {
+    font-weight: 600;
+  }
+
+  &-dateInfo {
+    text-align: right;
+
+    >div {
+      padding-left: 5px;
+      display: inline-flex;
+    }
+  }
+
+  &-body,
+  &-dateInfo {
+    font-size: 80%;
+  }
+
+  &-pictures {
+    display: flex;
+    margin: 20px 0px 0px 0px;
+
+    >div {
+      overflow: hidden;
+      width: 120px;
+      height: 90px;
+      margin-right: 10px;
+
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .table>:not(caption)>*>* {
+    padding: 0.5rem 0rem;
+  }
+}
+
+.average-star-rating {
+  display: flex;
+  justify-content: start;
+  align-content: flex-start;
+  margin: 15px auto;
+
+  .avgRating {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 80%;
+  }
+}
+
+.stars-outer {
+  display: inline-block;
+  position: relative;
+  font-family: 'Font Awesome 5 Free';
+  color: var(--bs-pink-dark);
+  font-weight: 200;
+
+  &::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+  }
+
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-weight: 900;
+    overflow: hidden;
+
+    &::before {
+      content: "\f005 \f005 \f005 \f005 \f005";
+    }
+  }
+}
+
+.progress-bar {
+  background-color: var(--bs-pink-dark);
+}
+
+.progress {
+  height: 0.8rem;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column-reverse;
+
+  .total-review {
+    overflow: hidden;
+    margin-bottom: 5px;
+
+    .star,
+    .progress,
+    .percent {
+      float: left;
+      margin-right: 5px;
+    }
+
+    .star,
+    .percent {
+      width: 45px;
+    }
+
+    .progress {
+      width: calc(100% - 150px);
+    }
+  }
+}

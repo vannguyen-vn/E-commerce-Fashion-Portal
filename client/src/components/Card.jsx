@@ -18,8 +18,6 @@ const Card = ({ productId }) => {
     Promise.all([overview, styles])
       .then(values => {
         if (isApiSubscribed) {
-          console.log(values[1].data.results)
-
           setRelatedProduct({
             overview: values[0].data,
             styles: values[1].data.results,
@@ -40,7 +38,6 @@ const Card = ({ productId }) => {
     <div className='card text-center'>
       <div className='thumb'><img src={relatedProduct.styles && relatedProduct.styles[0].photos[0].thumbnail_url !== null ? relatedProduct.styles[0].photos[0].thumbnail_url : '/static/default-placeholder.png'} className="card-img-top" /></div>
       <div className="card-body">
-        {/* <div className='card-text'>{relatedProduct.overview.category}</div> */}
         <h5 className="card-title">{relatedProduct.overview.name}</h5>
         <p className='card-text'>${relatedProduct.overview.default_price}</p>
       </div>
