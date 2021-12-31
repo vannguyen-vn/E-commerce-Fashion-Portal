@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
 
-const Overview = ({ product }) => {
+const Overview = ({ product, convertedRating }) => {
   const [active, setActive] = useState(0);
 
   const handleClick = (e) => {
     setActive(+e.target.dataset.index);
   }
+
   const sale = { textDecoration: product.styles && product.styles[active].sale_price !== null ? 'line-through' : 'none' };
 
   return (
@@ -30,7 +31,10 @@ const Overview = ({ product }) => {
         <Col md={4}>
           <div className='info padT0'>
             <div className='info_star'>
-              <a href='#reviews'>Read all reviews</a>
+              <div className='stars-outer'>
+                <div className='stars-inner' style={{ width: `${convertedRating}%` }}></div>
+              </div>
+              <span><a href='#reviews'>Read all reviews</a></span>
             </div>
             <div className='info_cat'>{product.overview.category}</div>
             <h2 className='info_name'>{product.overview.name}</h2>

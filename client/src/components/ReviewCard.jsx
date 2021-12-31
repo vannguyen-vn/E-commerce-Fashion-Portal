@@ -20,13 +20,13 @@ const ReviewCard = ({ review }) => {
       </Row>
       <div className='review-summary'>I'm enjoying wearing these shades</div>
       {review.body ? <div className='review-body'>{review.body}</div> : ''}
-      <div className='review-pictures'>
-        {review.photos ?
-          review.photos.map((photo) => (
+      {review.photos ?
+        <div className='review-pictures'>
+          {review.photos.map((photo) => (
             photo.url ? <div key={photo.id}><img src={photo.url} /></div> : ''
-          ))
-          : ''}
-      </div>
+          ))}
+        </div>
+        : ''}
     </div>
   )
 }

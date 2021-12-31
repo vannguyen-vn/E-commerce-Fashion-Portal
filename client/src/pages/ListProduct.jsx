@@ -9,9 +9,8 @@ const ListProduct = () => {
 
   return (
     <div id="featureProducts">
-
       <Banner />
-      <Container>
+      <Container id='productList'>
         <h1 className="title">Featured Products</h1>
         <div className='productList'>
           {products.map((product, index) => (
@@ -19,7 +18,7 @@ const ListProduct = () => {
               <Col>
                 <h4 className="name">{product.name}</h4>
                 <div className="slogan">{product.slogan}</div>
-                <p className="price">{product.default_price}</p>
+                <p className="price">{Number(product.default_price)}</p>
               </Col>
             </Link>
           ))}

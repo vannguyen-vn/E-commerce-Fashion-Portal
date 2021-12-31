@@ -85,6 +85,8 @@ export const ProductsProvider = props => {
       .catch((error) => {
         console.log('Error fetching related product ', error);
       });
+
+
   }
 
   return (

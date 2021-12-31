@@ -2,7 +2,12 @@ import React, { useState, useContext, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
+import { ProductsContext } from './ProductsContext';
+import { avgRating } from './helper/avgRating.js';
+
 const Card = ({ productId }) => {
+  const { getReviewsMeta, reviewsMeta } = useContext(ProductsContext);
+
   const [relatedProduct, setRelatedProduct] = useState({
     overview: {},
     features: [],
@@ -14,6 +19,7 @@ const Card = ({ productId }) => {
     let isApiSubscribed = true;
     const overview = axios.get(`/products/${productId}`);
     const styles = axios.get(`/products/${productId}/styles`);
+    // getReviewsMeta(productId);
 
     Promise.all([overview, styles])
       .then(values => {
@@ -28,18 +34,24 @@ const Card = ({ productId }) => {
       .catch((error) => {
         console.log('Error fetching related product', error);
       });
-
     return () => {
       isApiSubscribed = false;
     }
-  }, [])
+
+  }, [productId])
+
+
+  let convertedRating = avgRating(reviewsMeta) / 5 * 100;
 
   return (
     <div className='card text-center'>
       <div className='thumb'><img src={relatedProduct.styles && relatedProduct.styles[0].photos[0].thumbnail_url !== null ? relatedProduct.styles[0].photos[0].thumbnail_url : '/static/default-placeholder.png'} className="card-img-top" /></div>
       <div className="card-body">
+        <div className='stars-outer'>
+          <div className='stars-inner' style={{ width: `${convertedRating}%` }}></div>
+        </div>
         <h5 className="card-title">{relatedProduct.overview.name}</h5>
-        <p className='card-text'>${relatedProduct.overview.default_price}</p>
+        <p className='card-text'>${Number(relatedProduct.overview.default_price)}</p>
       </div>
     </div>
   )

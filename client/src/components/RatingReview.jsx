@@ -1,24 +1,35 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Row, Col, ProgressBar, Table } from 'react-bootstrap';
+import { Row, Col, ProgressBar, Button } from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion'
 import FontAwesomeIcon from '@fortawesome/react-fontawesome'
-import { ProductsContext } from './ProductsContext';
 import { avgRating, calEachRating } from './helper/avgRating.js';
 import ReviewCard from './ReviewCard'
 
 import axios from 'axios';
 
-const RatingReview = ({ productId }) => {
-  const { getReviews, reviews, reviewsMeta, getReviewsMeta } = useContext(ProductsContext);
-  let convertedRating = avgRating(reviewsMeta) / 5 * 100;
-  let eachRating = calEachRating(reviewsMeta);
+const RatingReview = ({ initReviews, reviewsMeta, convertedRating }) => {
+  const [limit, setLimit] = useState(4);
+  const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
-    getReviews(productId);
-    getReviewsMeta(productId)
-  }, [productId])
+    setReviews(initReviews);
+  }, [initReviews]);
+
+  let eachRating = calEachRating(reviewsMeta);
+
+  const handleClickMore = (e) => {
+    e.preventDefault();
+    setLimit(null);
+    document.querySelector('#viewmore').classList.toggle("hidden");
+  }
+
+  const handleFilter = (index) => {
+    let result = initReviews.filter(item => item.rating === index)
+    return setReviews(result)
+  }
 
   return (
-    <section className='RatingReview'>
+    <section className='RatingReview' id='reviews'>
       <h3>Customer Reviews</h3>
       <Row>
         <Col md={4}>
@@ -33,7 +44,7 @@ const RatingReview = ({ productId }) => {
               eachRating.map((rating, index) => {
                 if (Number(rating)) {
                   return (
-                    <div className='total-review' key={index}>
+                    <div className='total-review' key={index} onClick={() => handleFilter(index + 1)} >
                       <div className='star'>{index + 1} star</div>
                       <ProgressBar now={rating} max={100} />
                       <div className='percent'>{`${rating}%`}</div>
@@ -45,14 +56,16 @@ const RatingReview = ({ productId }) => {
           </div>
         </Col>
         <Col md={8}>
-          {reviews ? reviews.map(review => (
+          {reviews ? reviews.slice(0, limit ? limit : reviews.length).map(review => (
             <ReviewCard
               key={review.review_id}
               review={review}
             />
           )) : ''}
-        </Col>
+          {(limit < reviews.length) && <Button id='viewmore' variant="outline-secondary" className='' onClick={handleClickMore}>More reviews</Button>}
+          <Button id='viewmore' variant="outline-secondary" className='' onClick={handleClickMore}>Add review</Button>
 
+        </Col>
       </Row>
     </section>
   )

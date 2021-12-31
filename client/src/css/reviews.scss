@@ -65,6 +65,7 @@
   font-family: 'Font Awesome 5 Free';
   color: var(--bs-pink-dark);
   font-weight: 200;
+  overflow: hidden;
 
   &::before {
     content: "\f005 \f005 \f005 \f005 \f005";
@@ -76,6 +77,7 @@
     left: 0;
     font-weight: 900;
     overflow: hidden;
+    text-align: left;
 
     &::before {
       content: "\f005 \f005 \f005 \f005 \f005";
@@ -98,6 +100,12 @@
   .total-review {
     overflow: hidden;
     margin-bottom: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+    }
 
     .star,
     .progress,
