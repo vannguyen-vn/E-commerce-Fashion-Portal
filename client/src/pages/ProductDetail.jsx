@@ -9,15 +9,15 @@ import RatingReview from "../components/RatingReview";
 import axios from 'axios';
 
 const ProductDetail = () => {
-  const { id } = useParams();
-  const productId = id;
+  const { product_id } = useParams();
+  const productId = product_id;
   let isApiSubscribed = true;
 
-  const { getReviews, reviews, reviewsMeta, getReviewsMeta, product, getProduct } = useContext(ProductsContext);
+
+  const { getReviews, reviews, reviewsMeta, getReviewsMeta, product, getProduct, addnewreview, } = useContext(ProductsContext);
 
   useEffect(() => {
     if (isApiSubscribed) {
-      console.log(productId)
       getProduct(productId);
       getReviewsMeta(productId);
       getReviews(productId);
@@ -38,7 +38,7 @@ const ProductDetail = () => {
           product={product} convertedRating={convertedRating} />
         <h1 className="title">Realated Products</h1>
         <RelatedProducts productId={productId} />
-        <RatingReview initReviews={reviews} reviewsMeta={reviewsMeta} convertedRating={convertedRating} />
+        <RatingReview productid={productId} product={product} initReviews={reviews} reviewsMeta={reviewsMeta} convertedRating={convertedRating} getReviews={getReviews} />
       </Container>
     </div>
   )

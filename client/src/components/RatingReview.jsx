@@ -1,15 +1,17 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Row, Col, ProgressBar, Button } from 'react-bootstrap';
-import Accordion from 'react-bootstrap/Accordion'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome'
+import { Row, Col, ProgressBar, Button, Modal } from 'react-bootstrap';
+import Accordion from 'react-bootstrap/Accordion';
+import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { avgRating, calEachRating } from './helper/avgRating.js';
-import ReviewCard from './ReviewCard'
+import ReviewCard from './ReviewCard';
+import AddReview from './AddReview';
 
 import axios from 'axios';
 
-const RatingReview = ({ initReviews, reviewsMeta, convertedRating }) => {
+const RatingReview = ({ productid, product, initReviews, reviewsMeta, convertedRating, getReviews }) => {
   const [limit, setLimit] = useState(4);
   const [reviews, setReviews] = useState([]);
+  const [modalShow, setModalShow] = useState(false);
 
   useEffect(() => {
     setReviews(initReviews);
@@ -63,8 +65,13 @@ const RatingReview = ({ initReviews, reviewsMeta, convertedRating }) => {
             />
           )) : ''}
           {(limit < reviews.length) && <Button id='viewmore' variant="outline-secondary" className='' onClick={handleClickMore}>More reviews</Button>}
-          <Button id='viewmore' variant="outline-secondary" className='' onClick={handleClickMore}>Add review</Button>
-
+          <Button variant="outline-secondary" className='' onClick={() => setModalShow(true)}>Add review</Button>
+          <AddReview
+            productid={productid}
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            name={product.overview.name}
+          />
         </Col>
       </Row>
     </section>

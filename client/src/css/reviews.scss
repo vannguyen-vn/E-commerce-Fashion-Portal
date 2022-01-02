@@ -123,4 +123,23 @@
       width: calc(100% - 150px);
     }
   }
+
+}
+
+.star-rating {
+  button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 2px;
+  }
+
+  .on {
+    color: var(--bs-pink-dark);
+  }
+
+  .off {
+    color: var(--bs-gray-400);
+  }
 }

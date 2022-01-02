@@ -28,20 +28,20 @@ app.get('/products', (req, res) => {
 });
 
 
-app.get('/products/:id', (req, res) => {
-  AtelierAPI('GET', `/products/${req.params.id}`)
+app.get('/products/:product_id', (req, res) => {
+  AtelierAPI('GET', `/products/${req.params.product_id}`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
-app.get('/products/:id/styles', (req, res) => {
-  AtelierAPI('GET', `/products/${req.params.id}/styles`)
+app.get('/products/:product_id/styles', (req, res) => {
+  AtelierAPI('GET', `/products/${req.params.product_id}/styles`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
-app.get('/products/:id/related', (req, res) => {
-  AtelierAPI('GET', `/products/${req.params.id}/related`)
+app.get('/products/:product_id/related', (req, res) => {
+  AtelierAPI('GET', `/products/${req.params.product_id}/related`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
@@ -57,6 +57,16 @@ app.get('/reviews/meta/:product_id', (req, res) => {
   AtelierAPI('GET', `/reviews/meta/?sort=newest&product_id=${req.params.product_id
     } & count=100`)
     .then(response => res.send(response.data))
+    .catch(err => console.log('server err', err));
+});
+
+app.post('/reviews', (req, res) => {
+  AtelierAPI('POST', '/reviews', null, req.body)
+    .then(response => {
+      console.log('successful review form post :) ');
+      res.status(200);
+      return res.send(response.data);
+    })
     .catch(err => console.log('server err', err));
 });
 

@@ -37,6 +37,7 @@ export const ProductsProvider = props => {
   }
 
   const getProduct = (productId) => {
+    console.log(productId)
     let isApiSubscribed = true;
 
     const overview = axios.get(`/products/${productId}`);
@@ -79,15 +80,15 @@ export const ProductsProvider = props => {
       });
   }
 
+
   const getReviewsMeta = (productId) => {
     axios.get(`/reviews/meta/${productId}/`)
       .then(result => setReviewsMeta(result.data.ratings))
       .catch((error) => {
         console.log('Error fetching related product ', error);
       });
-
-
   }
+
 
   return (
     <ProductsContext.Provider value={{ getProductList, getProduct, getRelated, products, related, product, getReviews, getReviewsMeta, reviews, reviewsMeta }} >
