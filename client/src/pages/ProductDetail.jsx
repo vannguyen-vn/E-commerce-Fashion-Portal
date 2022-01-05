@@ -8,7 +8,7 @@ import RelatedProducts from '../components/RelatedProducts';
 import RatingReview from "../components/RatingReview";
 import axios from 'axios';
 
-const ProductDetail = () => {
+const ProductDetail = ({ handleShow, handleClose, showCart }) => {
   const { product_id } = useParams();
   const productId = product_id;
   let isApiSubscribed = true;
@@ -26,7 +26,7 @@ const ProductDetail = () => {
     return () => {
       isApiSubscribed = false;
     }
-  }, [productId,]);
+  }, [productId]);
 
   let convertedRating = avgRating(reviewsMeta) / 5 * 100;
 
@@ -35,13 +35,16 @@ const ProductDetail = () => {
       <div className='rb'><strong>Buy now, pay later. No Interest, ever!</strong><br></br>Introducing Afterpay! <a href=''>Learn More</a> About Afterpay</div>
       <Container>
         <Overview
-          productid={productId}
+          productId={productId}
           product={product}
+          handleShow={handleShow}
+          handleClose={handleClose}
+          showCart={showCart}
           convertedRating={convertedRating} />
         <h1 className="title">Realated Products</h1>
         <RelatedProducts productId={productId} />
         <RatingReview
-          productid={productId}
+          productId={productId}
           product={product}
           initReviews={reviews}
           reviewsMeta={reviewsMeta}

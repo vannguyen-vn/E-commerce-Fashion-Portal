@@ -12,15 +12,24 @@ import axios from 'axios';
 
 import { ProductsProvider } from './components/ProductsContext'
 
+
 const App = () => {
+  const [showCart, setShowCart] = useState(false);
+  const handleShow = () => setShowCart(true);
+  const handleClose = () => setShowCart(false);
 
   return (
     <ProductsProvider>
       <HashRouter>
-        <Header />
+        <Header handleShow={handleShow} handleClose={handleClose} />
         <Routes>
           <Route exact path='/' element={<ListProduct />} />
-          <Route exact path='products/:product_id' element={<ProductDetail />} />
+          <Route exact path='products/:product_id' element={
+            <ProductDetail
+              handleShow={handleShow}
+              handleClose={handleClose}
+              showCart={showCart}
+            />} />
         </Routes>
         <Testimonial />
       </HashRouter>

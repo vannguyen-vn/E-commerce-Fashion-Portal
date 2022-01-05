@@ -2,21 +2,42 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Col, Row, DropdownButton, Dropdown, Button, ButtonGroup } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
+import Cart from './Cart';
 
-const Overview = ({ product, convertedRating, productId }) => {
+const Overview = ({ product, convertedRating, productId, handleShow, handleClose, showCart }) => {
+
   const [active, setActive] = useState(0);
-  const [size, setSize] = useState('Select size');
-  const [quantity, setQuantity] = useState(1);
-
-
+  const [selectedSize, setSelectedSize] = useState('Select size');
+  const [selectedQuantity, setSelectedQuantity] = useState(1);
+  const [textBtnCart, setTextBtnCard] = useState('Add to cart');
+  const itemInCart = [];
   const handleClick = (e) => {
     setActive(+e.target.dataset.index);
   }
 
   const handleClickSize = (e) => {
     e.preventDefault();
-    setSize(e.target.innerHTML);
+    setSelectedSize(e.target.innerHTML);
   }
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    setTextBtnCard('Item in a cart');
+    let item = {
+      productId: productId,
+      quantity: selectedQuantity,
+      size: selectedSize,
+      thumb: product.styles ? product.styles[0].photos[0].thumbnail_url : '',
+      name: product.overview.name,
+      price: 140,
+    };
+    const found = itemInCart.find((item) => item.productId === productId);
+    found === undefined ? itemInCart.push(item) : alert('Item added!');
+    document.getElementById('addToCart').classList.toggle("disabled");
+  }
+
 
   const sale = { textDecoration: product.styles && product.styles[active].sale_price !== null ? 'line-through' : 'none' };
 
@@ -78,19 +99,24 @@ const Overview = ({ product, convertedRating, productId }) => {
             <div className="selectecSize">
               <DropdownButton
                 variant="outline-secondary"
-                title={size}
+                title={selectedSize}
                 id="selectSize"
               >
-                <Dropdown.Item eventKey="option-1" onClick={handleClickSize}>S</Dropdown.Item>
-                <Dropdown.Item eventKey="option-2" onClick={handleClickSize}>M</Dropdown.Item>
-                <Dropdown.Item eventKey="option-3" onClick={handleClickSize}>L</Dropdown.Item>
+                <Dropdown.Item eventKey="1" onClick={handleClickSize}>S</Dropdown.Item>
+                <Dropdown.Item eventKey="2" onClick={handleClickSize}>M</Dropdown.Item>
+                <Dropdown.Item eventKey="3" onClick={handleClickSize}>L</Dropdown.Item>
               </DropdownButton>
 
-              <DropdownButton id="quantity" title={quantity} variant="outline-secondary">
-                {[...Array(5)].map((x, i) => <Dropdown.Item as="button" key={i + 1} onClick={(e) => setQuantity(e.target.innerHTML)}>{i + 1}</Dropdown.Item>)}
+              <DropdownButton id="quantity" title={selectedQuantity} variant="outline-secondary">
+                {[...Array(5)].map((x, i) => <Dropdown.Item
+                  as="button"
+                  key={i + 1}
+                  onClick={(e) => setSelectedQuantity(e.target.innerHTML)} >{i + 1}
+                </Dropdown.Item>)}
               </DropdownButton>
             </div>
-            <Button variant="outline-secondary">Add to cart</Button>
+            <Button variant="outline-secondary" onClick={handleAddToCart} id="addToCart">{textBtnCart}</Button>
+            <Cart showCart={showCart} handleClose={handleClose} />
           </div>
         </Col>
       </Row>

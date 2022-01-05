@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from "react-router-dom";
-import { InputGroup, FormControl, Button, Container, Col, Row } from 'react-bootstrap'
+import { InputGroup, FormControl, Button, Container, Col, Row } from 'react-bootstrap';
 
 const Header = () => {
+
   return (
     <header>
       <Container>
