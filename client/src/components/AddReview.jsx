@@ -39,7 +39,7 @@ const AddReview = (props) => {
       .then(response => console.log(response.data))
       .catch(error => console.log('error', error));
 
-    props.onHide();
+    if (validated) props.onHide();
   };
 
 

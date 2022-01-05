@@ -37,7 +37,6 @@ export const ProductsProvider = props => {
   }
 
   const getProduct = (productId) => {
-    console.log(productId)
     let isApiSubscribed = true;
 
     const overview = axios.get(`/products/${productId}`);
@@ -79,7 +78,6 @@ export const ProductsProvider = props => {
         console.log('Error fetching related product ', error);
       });
   }
-
 
   const getReviewsMeta = (productId) => {
     axios.get(`/reviews/meta/${productId}/`)

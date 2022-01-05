@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useContext, createContext } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Routes, Route, HashRouter } from 'react-router-dom';
+import { Redirect } from 'react-router';
+
 import Header from './components/Header';
 import Banner from './components/Banner';
 import Testimonial from './components/Testimonial';
@@ -14,15 +16,14 @@ const App = () => {
 
   return (
     <ProductsProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <Routes>
-          <Route path='/' element={<ListProduct />} />
-          <Route path='products/:product_id' element={<ProductDetail />} />
+          <Route exact path='/' element={<ListProduct />} />
+          <Route exact path='products/:product_id' element={<ProductDetail />} />
         </Routes>
-
         <Testimonial />
-      </BrowserRouter>
+      </HashRouter>
     </ProductsProvider>
   )
 }

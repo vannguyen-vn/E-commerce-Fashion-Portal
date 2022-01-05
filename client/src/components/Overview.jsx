@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Container, Col, Row, DropdownButton, Dropdown, Button, ButtonGroup } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
 
-const Overview = ({ product, convertedRating }) => {
+const Overview = ({ product, convertedRating, productId }) => {
   const [active, setActive] = useState(0);
+  const [size, setSize] = useState('Select size');
+  const [quantity, setQuantity] = useState(1);
+
 
   const handleClick = (e) => {
     setActive(+e.target.dataset.index);
+  }
+
+  const handleClickSize = (e) => {
+    e.preventDefault();
+    setSize(e.target.innerHTML);
   }
 
   const sale = { textDecoration: product.styles && product.styles[active].sale_price !== null ? 'line-through' : 'none' };
@@ -34,7 +43,6 @@ const Overview = ({ product, convertedRating }) => {
               <div className='stars-outer'>
                 <div className='stars-inner' style={{ width: `${convertedRating}%` }}></div>
               </div>
-              <span><a href='#reviews'>Read all reviews</a></span>
             </div>
             <div className='info_cat'>{product.overview.category}</div>
             <h2 className='info_name'>{product.overview.name}</h2>
@@ -67,6 +75,22 @@ const Overview = ({ product, convertedRating }) => {
                 </li>
               ) : ''}
             </ul>
+            <div className="selectecSize">
+              <DropdownButton
+                variant="outline-secondary"
+                title={size}
+                id="selectSize"
+              >
+                <Dropdown.Item eventKey="option-1" onClick={handleClickSize}>S</Dropdown.Item>
+                <Dropdown.Item eventKey="option-2" onClick={handleClickSize}>M</Dropdown.Item>
+                <Dropdown.Item eventKey="option-3" onClick={handleClickSize}>L</Dropdown.Item>
+              </DropdownButton>
+
+              <DropdownButton id="quantity" title={quantity} variant="outline-secondary">
+                {[...Array(5)].map((x, i) => <Dropdown.Item as="button" key={i + 1} onClick={(e) => setQuantity(e.target.innerHTML)}>{i + 1}</Dropdown.Item>)}
+              </DropdownButton>
+            </div>
+            <Button variant="outline-secondary">Add to cart</Button>
           </div>
         </Col>
       </Row>

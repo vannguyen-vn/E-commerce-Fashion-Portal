@@ -19,7 +19,6 @@ const Card = ({ productId }) => {
     let isApiSubscribed = true;
     const overview = axios.get(`/products/${productId}`);
     const styles = axios.get(`/products/${productId}/styles`);
-    // getReviewsMeta(productId);
 
     Promise.all([overview, styles])
       .then(values => {
@@ -34,6 +33,7 @@ const Card = ({ productId }) => {
       .catch((error) => {
         console.log('Error fetching related product', error);
       });
+
     return () => {
       isApiSubscribed = false;
     }

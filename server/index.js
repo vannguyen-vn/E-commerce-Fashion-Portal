@@ -64,7 +64,7 @@ app.post('/reviews', (req, res) => {
   AtelierAPI('POST', '/reviews', null, req.body)
     .then(response => {
       console.log('successful review form post :) ');
-      res.status(200);
+      res.status(201);
       return res.send(response.data);
     })
     .catch(err => console.log('server err', err));

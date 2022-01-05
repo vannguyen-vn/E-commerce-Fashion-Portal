@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, HashRouter } from 'react-router-dom';
 import { Container, Col, Row } from 'react-bootstrap';
 import { ProductsContext } from '../components/ProductsContext';
 import { avgRating } from '../components/helper/avgRating.js';
@@ -26,7 +26,7 @@ const ProductDetail = () => {
     return () => {
       isApiSubscribed = false;
     }
-  }, [productId]);
+  }, [productId,]);
 
   let convertedRating = avgRating(reviewsMeta) / 5 * 100;
 
@@ -35,10 +35,18 @@ const ProductDetail = () => {
       <div className='rb'><strong>Buy now, pay later. No Interest, ever!</strong><br></br>Introducing Afterpay! <a href=''>Learn More</a> About Afterpay</div>
       <Container>
         <Overview
-          product={product} convertedRating={convertedRating} />
+          productid={productId}
+          product={product}
+          convertedRating={convertedRating} />
         <h1 className="title">Realated Products</h1>
         <RelatedProducts productId={productId} />
-        <RatingReview productid={productId} product={product} initReviews={reviews} reviewsMeta={reviewsMeta} convertedRating={convertedRating} getReviews={getReviews} />
+        <RatingReview
+          productid={productId}
+          product={product}
+          initReviews={reviews}
+          reviewsMeta={reviewsMeta}
+          convertedRating={convertedRating}
+          getReviews={getReviews} />
       </Container>
     </div>
   )

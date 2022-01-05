@@ -123,4 +123,30 @@
 
 .overview {
   margin-top: 10px;
+
+  .selectecSize {
+    display: flex;
+    margin-bottom: 10px;
+
+    #selectSize {
+      width: 140px;
+      text-align: left;
+
+      &:after {
+        position: absolute;
+        right: 10px;
+        top: 45%;
+      }
+
+    }
+
+    #quantity {
+      min-width: 50px;
+      margin-left: 5px;
+    }
+
+    .dropdown-menu {
+      min-width: 100%;
+    }
+  }
 }
