@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Col, Row, DropdownButton, Dropdown, Button, ButtonGroup } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
 import Cart from './Cart';
 
-const Overview = ({ product, convertedRating, productId, handleShow, handleClose, showCart }) => {
+const Overview = ({ product, convertedRating, productId }) => {
 
   const [active, setActive] = useState(0);
   const [selectedSize, setSelectedSize] = useState('Select size');
   const [selectedQuantity, setSelectedQuantity] = useState(1);
   const [textBtnCart, setTextBtnCard] = useState('Add to cart');
-  const itemInCart = [];
+  const [itemInCart, setItemInCard] = useState([]);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  useEffect(() => { setItemInCard }, [itemInCart])
+
   const handleClick = (e) => {
     setActive(+e.target.dataset.index);
   }
@@ -21,6 +29,7 @@ const Overview = ({ product, convertedRating, productId, handleShow, handleClose
   }
 
   const handleAddToCart = (e) => {
+
     e.preventDefault();
     e.stopPropagation();
 
@@ -31,11 +40,11 @@ const Overview = ({ product, convertedRating, productId, handleShow, handleClose
       size: selectedSize,
       thumb: product.styles ? product.styles[0].photos[0].thumbnail_url : '',
       name: product.overview.name,
-      price: 140,
+      price: product.overview.default_price,
     };
     const found = itemInCart.find((item) => item.productId === productId);
-    found === undefined ? itemInCart.push(item) : alert('Item added!');
-    document.getElementById('addToCart').classList.toggle("disabled");
+    found === undefined ? itemInCart.push(item) : alert("Item added!");
+    handleShow();
   }
 
 
@@ -116,7 +125,7 @@ const Overview = ({ product, convertedRating, productId, handleShow, handleClose
               </DropdownButton>
             </div>
             <Button variant="outline-secondary" onClick={handleAddToCart} id="addToCart">{textBtnCart}</Button>
-            <Cart showCart={showCart} handleClose={handleClose} />
+            <Cart show={show} handleClose={handleClose} itemInCart={itemInCart} />
           </div>
         </Col>
       </Row>

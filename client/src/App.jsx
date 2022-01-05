@@ -14,22 +14,15 @@ import { ProductsProvider } from './components/ProductsContext'
 
 
 const App = () => {
-  const [showCart, setShowCart] = useState(false);
-  const handleShow = () => setShowCart(true);
-  const handleClose = () => setShowCart(false);
+  const { showCart } = false;
 
   return (
     <ProductsProvider>
       <HashRouter>
-        <Header handleShow={handleShow} handleClose={handleClose} />
+        <Header />
         <Routes>
           <Route exact path='/' element={<ListProduct />} />
-          <Route exact path='products/:product_id' element={
-            <ProductDetail
-              handleShow={handleShow}
-              handleClose={handleClose}
-              showCart={showCart}
-            />} />
+          <Route exact path='products/:product_id' element={<ProductDetail />} />
         </Routes>
         <Testimonial />
       </HashRouter>

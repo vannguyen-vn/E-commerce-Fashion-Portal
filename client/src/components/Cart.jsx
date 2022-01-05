@@ -1,14 +1,18 @@
-import React from 'react';
-import { Modal, Button, Container, Col, Row } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import { Modal, Button, Table } from 'react-bootstrap';
 
-const Cart = ({ showCart, handleClose }) => {
+const Cart = ({ show, handleClose, itemInCart }) => {
+
+  let total = itemInCart.reduce((previousValue, obj) => {
+    return previousValue + (obj.price * obj.quantity)
+  }, 0)
 
   return (
     <Modal
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      show={showCart}
+      show={(show)}
       onHide={handleClose}
       className='cart'
     >
@@ -17,11 +21,34 @@ const Cart = ({ showCart, handleClose }) => {
       </Modal.Header>
 
       <Modal.Body>
-        <p>Modal body text goes here.</p>
+        <span id="empty-cart">{(itemInCart.length === 0) ? "Shopping cart is empty" :
+          ""}</span>
+        <Table responsive='sm'>
+          <thead>
+            <tr>
+              <th></th>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Price</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            {itemInCart.map((item) => (
+              <tr key={item.productId}>
+                <td><img src={item.thumb} className='thumb' /></td>
+                <td>{item.name}</td>
+                <td>{item.size}</td>
+                <td>${Number(item.price)}</td>
+                <td>{item.quantity}</td>
+              </tr>))}
+          </tbody>
+        </Table>
       </Modal.Body>
 
       <Modal.Footer>
-        <div className='total'>Total: £447</div>
+
+        <div className='total'>Total: ${total}</div>
       </Modal.Footer>
     </Modal>
   )

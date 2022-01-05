@@ -37,9 +37,6 @@ const ProductDetail = ({ handleShow, handleClose, showCart }) => {
         <Overview
           productId={productId}
           product={product}
-          handleShow={handleShow}
-          handleClose={handleClose}
-          showCart={showCart}
           convertedRating={convertedRating} />
         <h1 className="title">Realated Products</h1>
         <RelatedProducts productId={productId} />
