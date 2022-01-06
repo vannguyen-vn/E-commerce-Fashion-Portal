@@ -11,10 +11,10 @@ const ListProduct = () => {
 
 
   return (
-    <div className={theme}>
+    <div className={theme} id="featureProducts">
       <Header />
       <Banner />
-      <div id="featureProducts">
+      <div>
         <Container id='productList'>
           <h1 className="title">Featured Products</h1>
           <div className='productList'>

@@ -33,9 +33,9 @@ const ProductDetail = ({ handleShow, handleClose, showCart }) => {
   let convertedRating = avgRating(reviewsMeta) / 5 * 100;
 
   return (
-    <div className={theme}>
+    <div className={theme} className='productDetail'>
       <Header />
-      <div className='productDetail'>
+      <div >
         <div className='rb'><strong>Buy now, pay later. No Interest, ever!</strong><br></br>Introducing Afterpay! <a href=''>Learn More</a> About Afterpay</div>
         <Container>
           <Overview
