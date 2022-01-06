@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Col, Row, DropdownButton, Dropdown, Button, ButtonGroup } from 'react-bootstrap';
+import { Col, Row, DropdownButton, Dropdown, Button } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
 import Cart from './Cart';
 

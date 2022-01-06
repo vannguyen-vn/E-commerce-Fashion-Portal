@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { Container, Col, Row } from 'react-bootstrap';
+import { Container, Col } from 'react-bootstrap';
 import { ProductsContext } from '../components/ProductsContext';
 import Banner from '../components/Banner';
 import Header from '../components/Header';
@@ -8,7 +8,6 @@ import Testimonial from '../components/Testimonial';
 
 const ListProduct = () => {
   const { products, theme } = useContext(ProductsContext);
-
 
   return (
     <div className={theme}>
@@ -29,8 +28,8 @@ const ListProduct = () => {
             ))}
           </div>
         </Container>
-        <Testimonial />
       </div>
+      <Testimonial />
     </div>
 
   )

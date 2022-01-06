@@ -1,5 +1,4 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { Container, Col, Row } from 'react-bootstrap';
 import axios from 'axios';
 
 import { ProductsContext } from './ProductsContext';
@@ -37,7 +36,6 @@ const Card = ({ productId }) => {
     return () => {
       isApiSubscribed = false;
     }
-
   }, [productId])
 
 

@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Row, Col, Modal, Button, Form } from 'react-bootstrap';
+import React, { useState } from 'react';
+import { Modal, Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { ProductsContext } from './ProductsContext';
@@ -100,14 +100,12 @@ const AddReview = (props) => {
               placeholder="Why did you like the product or not?"
               required
               onChange={(e) => setBody(e.target.value)}
-            // value={newReivew.body}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="recommend">
             <Form.Check
               type="checkbox"
               label="Do you recommend this product?"
-              // value={newReivew.recommend}
               onChange={(e) => setRecommend(e.target.value)}
             />
           </Form.Group>

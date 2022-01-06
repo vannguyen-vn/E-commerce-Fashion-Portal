@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useContext, createContext } from 'react';
+import React from 'react';
 import { Routes, Route, HashRouter } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import ListProduct from './pages/ListProduct';
 import ProductDetail from './pages/ProductDetail';
 
 import axios from 'axios';
-
 import { ProductsProvider } from './components/ProductsContext'
 
 

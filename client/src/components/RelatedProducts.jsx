@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Container, Col, Row } from 'react-bootstrap';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -29,7 +29,6 @@ const responsive = {
 };
 
 const RelatedProducts = ({ productId }) => {
-
   const { getRelated, related } = useContext(ProductsContext);
 
   useEffect(() => {
