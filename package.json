@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "webpack --mode development -w",
-    "build": "webpack --mode production --env.production",
+    "build": "webpack --mode production",
     "start": "node server/index.js"
   },
   "dependencies": {
