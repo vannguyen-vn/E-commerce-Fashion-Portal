@@ -48,7 +48,7 @@ const Overview = ({ product, convertedRating, productId }) => {
   }
 
 
-  const sale = { textDecoration: product.styles && product.styles[active].sale_price !== null ? 'line-through' : 'none' };
+  const sale = { textDecoration: product.styles && product.styles[active].sale_price ? product.styles && product.styles[active].sale_price !== null ? 'line-through' : 'none' : '' };
 
   return (
     <section className='overview'>
