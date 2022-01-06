@@ -1,12 +1,12 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const token = require('../client/config.js');
+const token = require('../config.js');
 
 const app = express();
 const PORT = 3000;
 
-app.use(express.static(__dirname + '/../client/dist'));
+app.use(express.static(__dirname + '/../dist'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

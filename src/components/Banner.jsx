@@ -7,14 +7,14 @@ const Banner = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src='/static/Main-Banner-2-1903x700.jpg'
+          src='/static/media/Main-Banner-2-1903x700.jpg'
           alt="First slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src='/static/Main-Banner-1903x700.jpg'
+          src='/static/media/Main-Banner-1903x700.jpg'
           alt="First slide"
         />
       </Carousel.Item>

@@ -12,9 +12,9 @@ module.exports = function (_env, argv) {
 
   return {
     devtool: isDevelopment && "cheap-module-source-map",
-    entry: "./client/src/index.jsx",
+    entry: "./src/index.jsx",
     output: {
-      path: path.resolve(__dirname, "./client/dist"),
+      path: path.resolve(__dirname, "dist"),
       filename: "assets/js/[name].[contenthash:8].js",
       publicPath: "/"
     },
@@ -111,8 +111,8 @@ module.exports = function (_env, argv) {
       splitChunks: {
         chunks: "all",
         minSize: 0,
-        maxInitialRequests: 10,
-        maxAsyncRequests: 10,
+        maxInitialRequests: 20,
+        maxAsyncRequests: 20,
         cacheGroups: {
           vendors: {
             test: /[\\/]node_modules[\\/]/,
