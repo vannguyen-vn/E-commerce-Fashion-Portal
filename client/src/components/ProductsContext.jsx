@@ -4,6 +4,7 @@ import axios from 'axios';
 export const ProductsContext = createContext();
 
 export const ProductsProvider = props => {
+  const [theme, setTheme] = useState('light');
   const [products, setProducts] = useState([]);
   const [isLoaded, setIsLoaded] = useState(true);
   const [related, setRelated] = useState([]);
@@ -89,7 +90,7 @@ export const ProductsProvider = props => {
 
 
   return (
-    <ProductsContext.Provider value={{ getProductList, getProduct, getRelated, products, related, product, getReviews, getReviewsMeta, reviews, reviewsMeta }} >
+    <ProductsContext.Provider value={{ getProductList, getProduct, getRelated, products, related, product, getReviews, getReviewsMeta, reviews, reviewsMeta, theme }} >
       {props.children}
     </ProductsContext.Provider>
   );

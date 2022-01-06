@@ -7,6 +7,8 @@ import Overview from '../components/Overview';
 import RelatedProducts from '../components/RelatedProducts';
 import RatingReview from "../components/RatingReview";
 import axios from 'axios';
+import Header from '../components/Header';
+import Testimonial from '../components/Testimonial';
 
 const ProductDetail = ({ handleShow, handleClose, showCart }) => {
   const { product_id } = useParams();
@@ -14,7 +16,7 @@ const ProductDetail = ({ handleShow, handleClose, showCart }) => {
   let isApiSubscribed = true;
 
 
-  const { getReviews, reviews, reviewsMeta, getReviewsMeta, product, getProduct, addnewreview, } = useContext(ProductsContext);
+  const { getReviews, reviews, reviewsMeta, getReviewsMeta, product, getProduct, addnewreview, theme } = useContext(ProductsContext);
 
   useEffect(() => {
     if (isApiSubscribed) {
@@ -31,23 +33,27 @@ const ProductDetail = ({ handleShow, handleClose, showCart }) => {
   let convertedRating = avgRating(reviewsMeta) / 5 * 100;
 
   return (
-    <div className='productDetail'>
-      <div className='rb'><strong>Buy now, pay later. No Interest, ever!</strong><br></br>Introducing Afterpay! <a href=''>Learn More</a> About Afterpay</div>
-      <Container>
-        <Overview
-          productId={productId}
-          product={product}
-          convertedRating={convertedRating} />
-        <h1 className="title">Realated Products</h1>
-        <RelatedProducts productId={productId} />
-        <RatingReview
-          productId={productId}
-          product={product}
-          initReviews={reviews}
-          reviewsMeta={reviewsMeta}
-          convertedRating={convertedRating}
-          getReviews={getReviews} />
-      </Container>
+    <div className={theme}>
+      <Header />
+      <div className='productDetail'>
+        <div className='rb'><strong>Buy now, pay later. No Interest, ever!</strong><br></br>Introducing Afterpay! <a href=''>Learn More</a> About Afterpay</div>
+        <Container>
+          <Overview
+            productId={productId}
+            product={product}
+            convertedRating={convertedRating} />
+          <h1 className="title">Realated Products</h1>
+          <RelatedProducts productId={productId} />
+          <RatingReview
+            productId={productId}
+            product={product}
+            initReviews={reviews}
+            reviewsMeta={reviewsMeta}
+            convertedRating={convertedRating}
+            getReviews={getReviews} />
+        </Container>
+      </div>
+      <Testimonial />
     </div>
   )
 }

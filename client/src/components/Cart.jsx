@@ -45,9 +45,7 @@ const Cart = ({ show, handleClose, itemInCart }) => {
           </tbody>
         </Table>
       </Modal.Body>
-
       <Modal.Footer>
-
         <div className='total'>Total: ${total}</div>
       </Modal.Footer>
     </Modal>

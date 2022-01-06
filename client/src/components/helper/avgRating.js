@@ -1,4 +1,3 @@
-
 const avgRating = (obj) => {
   let wholeTotal = 0;
   let resTotal = 0;

@@ -76,7 +76,7 @@ module.exports = function (_env, argv) {
       isProduction &&
       new MiniCssExtractPlugin({
         filename: "assets/css/[name].[contenthash:8].css",
-        // chunkFilename: "assets/css/[name].[contenthash:8].chunk.css"
+        chunkFilename: "assets/css/[name].[contenthash:8].chunk.css"
       }),
       new HtmlWebpackPlugin({
         template: path.resolve(__dirname, "public/index.html"),
@@ -94,7 +94,7 @@ module.exports = function (_env, argv) {
         new TerserWebpackPlugin({
           terserOptions: {
             compress: {
-              comparisons: false
+              comparisons: true
             },
             mangle: {
               safari10: true
