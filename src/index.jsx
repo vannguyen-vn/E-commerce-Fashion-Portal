@@ -8,5 +8,4 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import '../src/css/main.scss'
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root'));
+  <App />, document.getElementById('root'));

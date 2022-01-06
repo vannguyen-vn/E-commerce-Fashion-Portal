@@ -45,7 +45,7 @@ const Card = ({ productId }) => {
 
   return (
     <div className='card text-center'>
-      <div className='thumb'><img src={relatedProduct.styles && relatedProduct.styles[0].photos[0].thumbnail_url !== null ? relatedProduct.styles[0].photos[0].thumbnail_url : '/static/default-placeholder.png'} className="card-img-top" /></div>
+      <div className='thumb'><img src={relatedProduct.styles && relatedProduct.styles[0].photos[0].thumbnail_url !== null ? relatedProduct.styles[0].photos[0].thumbnail_url : '/static/media/default-placeholder.png'} className="card-img-top" /></div>
       <div className="card-body">
         <div className='stars-outer'>
           <div className='stars-inner' style={{ width: `${convertedRating}%` }}></div>
