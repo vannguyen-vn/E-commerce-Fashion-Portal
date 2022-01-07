@@ -16,7 +16,7 @@ const App = () => {
       <HashRouter>
         <Routes>
           <Route exact path='/' element={<ListProduct />} />
-          <Route exact path='products/:product_id' element={<ProductDetail />} />
+          <Route exact path='/products/:product_id' element={<ProductDetail />} />
         </Routes>
       </HashRouter>
     </ProductsProvider>
