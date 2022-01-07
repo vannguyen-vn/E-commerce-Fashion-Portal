@@ -1,9 +1,7 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-// const token = require('../config.js');
-const token = require('../netlify.toml');
-
+const token = require('../config.js');
 const app = express();
 const PORT = 3000;
 
