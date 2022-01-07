@@ -17,8 +17,8 @@ const Card = ({ productId }) => {
 
   useEffect(() => {
     let isApiSubscribed = true;
-    const overview = axios.get(`/products/${productId}`);
-    const styles = axios.get(`/products/${productId}/styles`);
+    const overview = axios.get(`https://fashion-van.netlify.app/products/${productId}`);
+    const styles = axios.get(`https://fashion-van.netlify.app/products/${productId}/styles`);
 
     Promise.all([overview, styles])
       .then(values => {
