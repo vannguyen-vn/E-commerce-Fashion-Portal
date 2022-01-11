@@ -25,7 +25,7 @@ export const ProductsProvider = props => {
 
   const getProductList = () => {
     let result = [];
-    axios.get('https://fashion-van.netlify.app/products', { page: 1, count: 20 })
+    axios.get('/products', { page: 1, count: 20 })
       .then((resultProductList) => {
         setIsLoaded(false)
         setProducts(resultProductList.data)
@@ -40,8 +40,8 @@ export const ProductsProvider = props => {
   const getProduct = (productId) => {
     let isApiSubscribed = true;
 
-    const overview = axios.get(`https://fashion-van.netlify.app/products/${productId}`);
-    const styles = axios.get(`https://fashion-van.netlify.app/products/${productId}/styles`);
+    const overview = axios.get(`/products/${productId}`);
+    const styles = axios.get(`/products/${productId}/styles`);
 
     Promise.all([overview, styles])
       .then(values => {
@@ -65,7 +65,7 @@ export const ProductsProvider = props => {
   }
 
   const getRelated = (productId) => {
-    axios.get(`https://fashion-van.netlify.app/products/${productId}/related`)
+    axios.get(`/products/${productId}/related`)
       .then(result => setRelated(result.data))
       .catch((error) => {
         console.log('Error fetching related product ', error);
@@ -73,7 +73,7 @@ export const ProductsProvider = props => {
   }
 
   const getReviews = (productId) => {
-    axios.get(`https://fashion-van.netlify.app/reviews/${productId}`)
+    axios.get(`/reviews/${productId}`)
       .then(result => setReviews(result.data.results))
       .catch((error) => {
         console.log('Error fetching related product ', error);
@@ -81,7 +81,7 @@ export const ProductsProvider = props => {
   }
 
   const getReviewsMeta = (productId) => {
-    axios.get(`https://fashion-van.netlify.app/reviews/meta/${productId}/`)
+    axios.get(`/reviews/meta/${productId}/`)
       .then(result => setReviewsMeta(result.data.ratings))
       .catch((error) => {
         console.log('Error fetching related product ', error);
