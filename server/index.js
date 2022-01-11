@@ -21,46 +21,46 @@ var AtelierAPI = (method, endpoint, params = null, data = null) => {
   }));
 };
 
-app.get('/products', (req, res) => {
+app.get('https://61dcdb163f6763552baaea30--fashion-van.netlify.app//products', (req, res) => {
   AtelierAPI('GET', '/products', { page: 1, count: 20 })
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
 
-app.get('/products/:product_id', (req, res) => {
+app.get('https://61dcdb163f6763552baaea30--fashion-van.netlify.app//products/:product_id', (req, res) => {
   AtelierAPI('GET', `/products/${req.params.product_id}`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
-app.get('/products/:product_id/styles', (req, res) => {
+app.get('https://61dcdb163f6763552baaea30--fashion-van.netlify.app//products/:product_id/styles', (req, res) => {
   AtelierAPI('GET', `/products/${req.params.product_id}/styles`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
-app.get('/products/:product_id/related', (req, res) => {
+app.get('https://61dcdb163f6763552baaea30--fashion-van.netlify.app//products/:product_id/related', (req, res) => {
   AtelierAPI('GET', `/products/${req.params.product_id}/related`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
 
-app.get('/reviews/:product_id', (req, res) => {
+app.get('https://61dcdb163f6763552baaea30--fashion-van.netlify.app//reviews/:product_id', (req, res) => {
   AtelierAPI('GET', `/reviews/?sort=newest&product_id=${req.params.product_id}&count=50`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
-app.get('/reviews/meta/:product_id', (req, res) => {
+app.get('https://61dcdb163f6763552baaea30--fashion-van.netlify.app//reviews/meta/:product_id', (req, res) => {
   AtelierAPI('GET', `/reviews/meta/?sort=newest&product_id=${req.params.product_id
     } & count=100`)
     .then(response => res.send(response.data))
     .catch(err => console.log('server err', err));
 });
 
-app.post('/reviews', (req, res) => {
+app.post('https://61dcdb163f6763552baaea30--fashion-van.netlify.app//reviews', (req, res) => {
   AtelierAPI('POST', '/reviews', null, req.body)
     .then(response => {
       console.log('successful review form post :) ');
