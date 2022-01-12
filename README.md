@@ -9,7 +9,12 @@
 ![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Less](https://img.shields.io/badge/less-2B4C80?style=for-the-badge&logo=less&logoColor=white)
 
-## Project Catwalk
+## Project Fashion store
+
+
+
+<p align = center><img src='https://github.com/vannguyen-vn/E-commerce-Fashion-Portal/blob/deploy/dist/static/media/fashion-store.gif'/></p>
+
 This is a modernized retail portal based on design specifications and requirements outlined by project stakeholders. 
 
 ## Tech Stack and Challenges
@@ -21,7 +26,7 @@ Utilized React on to implement a responsive, single-page application capable of 
 ### Node.js and Express
 <!-- - Despite being a front-end capstone that explicitly placed back-end implementation out of scope, used Nodejs to utilize Express. -->
 <!-- - Simplified API requests by implementing a proxy server in Express.js that adds authentication while forwarding requests to an existing RESTful API. -->
-Although the emphasis of this project was front-end development, we utilized an Express for Node.js server to route requests to a RESTful API with necessary authorization added. Express compression middleware was used for optimization.
+Although the emphasis of this project was front-end development, I utilized an Express for Node.js server to route requests to a RESTful API with necessary authorization added. Express compression middleware was used for optimization.
 
 ### Webpack
 Used webpack as our solution for bundling static assets. The compression, imageminimizer and cssminimizer plugins help boost web performance.
