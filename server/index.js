@@ -3,9 +3,12 @@ const path = require('path');
 const axios = require('axios');
 
 require('dotenv').config()
+const { REACT_APP_TOKEN } = process.env;
+console.log(REACT_APP_TOKEN)
+// const token = require('../config.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
-const { REACT_APP_TOKEN } = process.env;
+
 
 app.use(express.static(__dirname + '/../dist'));
 app.use(express.json());
@@ -15,7 +18,7 @@ var AtelierAPI = (method, endpoint, params = null, data = null) => {
   return (axios({
     method: method,
     url: endpoint,
-    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
+    baseURL: 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
     params: params,
     data: data,
     headers: { Authorization: REACT_APP_TOKEN },
