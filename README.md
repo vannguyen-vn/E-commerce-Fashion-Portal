@@ -23,7 +23,7 @@ Utilized React on to implement a responsive, single-page application capable of 
 ### Node.js and Express
 <!-- - Despite being a front-end capstone that explicitly placed back-end implementation out of scope, used Nodejs to utilize Express. -->
 <!-- - Simplified API requests by implementing a proxy server in Express.js that adds authentication while forwarding requests to an existing RESTful API. -->
-Although the emphasis of this project was front-end development, we utilized an Express for Node.js server to route requests to a RESTful API with necessary authorization added. Express compression middleware was used for optimization.
+Although the emphasis of this project was front-end development, I utilized an Express for Node.js server to route requests to a RESTful API with necessary authorization added. Express compression middleware was used for optimization.
 
 ### Webpack
 Used webpack as our solution for bundling static assets. The compression, imageminimizer and cssminimizer plugins help boost web performance.
