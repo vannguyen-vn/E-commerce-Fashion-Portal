@@ -12,7 +12,7 @@
 ## Project Fashion Store
 This is a modernized retail portal based on design specifications and requirements outlined by project stakeholders.
 
-<!-- Insert gif of overall image  -->
+<p align='center'><img src='https://github.com/vannguyen-vn/fashion-store/blob/cleanup/dist/static/media/fashion-store.gif' /></p>
 
 ## Tech Stack and Challenges
 
