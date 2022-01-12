@@ -17,7 +17,7 @@ var AtelierAPI = (method, endpoint, params = null, data = null) => {
     baseURL: 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
     params: params,
     data: data,
-    headers: { Authorization: token.REACT_APP_TOKEN },
+    headers: { Authorization: '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' },
   }));
 };
 
