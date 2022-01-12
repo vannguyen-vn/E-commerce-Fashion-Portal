@@ -1,10 +1,11 @@
 const express = require('express');
 const path = require('path');
 const axios = require('axios');
-const token = require('../config.js');
 
+require('dotenv').config()
 const app = express();
 const PORT = process.env.PORT || 3000;
+const { REACT_APP_TOKEN } = process.env;
 
 app.use(express.static(__dirname + '/../dist'));
 app.use(express.json());
@@ -17,7 +18,7 @@ var AtelierAPI = (method, endpoint, params = null, data = null) => {
     baseURL: 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
     params: params,
     data: data,
-    headers: { Authorization: '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' },
+    headers: { Authorization: REACT_APP_TOKEN },
   }));
 };
 
