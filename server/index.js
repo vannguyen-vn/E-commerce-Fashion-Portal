@@ -4,13 +4,11 @@ const axios = require('axios');
 
 require('dotenv').config()
 const { REACT_APP_TOKEN } = process.env;
-console.log(REACT_APP_TOKEN)
-// const token = require('../config.js');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
 
-app.use(express.static(__dirname + '/../dist'));
+app.use(express.static(__dirname + '/dist'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
