@@ -12,8 +12,6 @@
 ## Project Catwalk
 This is a modernized retail portal based on design specifications and requirements outlined by project stakeholders. 
 
-<!-- Insert gif of overall image  -->
-
 ## Tech Stack and Challenges
 
 ### React
