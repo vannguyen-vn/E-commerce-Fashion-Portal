@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, ProgressBar, Button, Modal } from 'react-bootstrap';
 import Accordion from 'react-bootstrap/Accordion';
 import FontAwesomeIcon from '@fortawesome/react-fontawesome';

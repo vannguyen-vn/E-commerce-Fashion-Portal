@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { Link, useParams, HashRouter } from 'react-router-dom';
-import { Container, Col, Row } from 'react-bootstrap';
+import React, { useContext, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Container } from 'react-bootstrap';
 import { ProductsContext } from '../components/ProductsContext';
 import { avgRating } from '../components/helper/avgRating.js';
 import Overview from '../components/Overview';
@@ -14,7 +14,6 @@ const ProductDetail = ({ handleShow, handleClose, showCart }) => {
   const { product_id } = useParams();
   const productId = product_id;
   let isApiSubscribed = true;
-
 
   const { getReviews, reviews, reviewsMeta, getReviewsMeta, product, getProduct, addnewreview, theme } = useContext(ProductsContext);
 
