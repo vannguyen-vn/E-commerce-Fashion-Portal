@@ -14,10 +14,10 @@ var AtelierAPI = (method, endpoint, params = null, data = null) => {
   return (axios({
     method: method,
     url: endpoint,
-    baseURL: 'https://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
+    baseURL: 'http://app-hrsei-api.herokuapp.com/api/fec2/hr-rfp/',
     params: params,
     data: data,
-    headers: { Authorization: token.TOKEN },
+    headers: { Authorization: token.REACT_APP_TOKEN },
   }));
 };
 
