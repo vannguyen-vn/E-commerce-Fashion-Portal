@@ -1,4 +1,4 @@
-# fashion-store# E-commerce Fashion Portal
+# E-commerce Fashion Portal
 ![javascript](https://img.shields.io/badge/JavaScript-20232A?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 ![react](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![node.js](https://img.shields.io/badge/Node.js-20232A?style=for-the-badge&logo=nodedotjs&logoColor=green)
@@ -9,7 +9,11 @@
 ![css](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
 ![Less](https://img.shields.io/badge/less-2B4C80?style=for-the-badge&logo=less&logoColor=white)
 
-## Project Catwalk
+
+## Fashion-store
+
+<p align='center'><img src='https://github.com/vannguyen-vn/fashion-store/blob/deploy/dist/static/media/fashion-store.gif' /></p>
+
 This is a modernized retail portal based on design specifications and requirements outlined by project stakeholders. 
 
 ## Tech Stack and Challenges
@@ -21,13 +25,12 @@ Utilized React on to implement a responsive, single-page application capable of 
 ### Node.js and Express
 <!-- - Despite being a front-end capstone that explicitly placed back-end implementation out of scope, used Nodejs to utilize Express. -->
 <!-- - Simplified API requests by implementing a proxy server in Express.js that adds authentication while forwarding requests to an existing RESTful API. -->
-Although the emphasis of this project was front-end development, we utilized an Express for Node.js server to route requests to a RESTful API with necessary authorization added. Express compression middleware was used for optimization.
+Although the emphasis of this project was front-end development, I utilized an Express for Node.js server to route requests to a RESTful API with necessary authorization added. Express compression middleware was used for optimization.
 
 ### Webpack
 Used webpack as our solution for bundling static assets. The compression, imageminimizer and cssminimizer plugins help boost web performance.
 <!-- - Webpack was our solution to elegantly handle our numerous static assets, implement JSX, and harness ES6 in this project. -->
 
----
 
 ## Product Overview
 
@@ -66,5 +69,3 @@ Selecting the “add a review” button at the bottom of the review list renders
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[QuestionsAndAnswers]: readMeAssets/QuestionAnswer.gif
-[ProductOverview]: readMeAssets/productOverview.png
