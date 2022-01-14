@@ -12,33 +12,28 @@
 ## Project Fashion store
 
 
-
 <p align = center><img src='https://github.com/vannguyen-vn/E-commerce-Fashion-Portal/blob/deploy/dist/static/media/fashion-store.gif'/></p>
 
-This is a modernized retail portal based on design specifications and requirements outlined by project stakeholders. 
+This is a modernized retail portal based on design specifications and requirements outlined by project stakeholders.
+
 
 ## Tech Stack and Challenges
 
 ### React
-Utilized React on to implement a responsive, single-page application capable of rendering data from a third-party API. 
+Utilized React on to implement a responsive, single-page application capable of rendering data from a third-party API.
 
 
 ### Node.js and Express
-<!-- - Despite being a front-end capstone that explicitly placed back-end implementation out of scope, used Nodejs to utilize Express. -->
-<!-- - Simplified API requests by implementing a proxy server in Express.js that adds authentication while forwarding requests to an existing RESTful API. -->
 Although the emphasis of this project was front-end development, I utilized an Express for Node.js server to route requests to a RESTful API with necessary authorization added. Express compression middleware was used for optimization.
 
 ### Webpack
 Used webpack as our solution for bundling static assets. The compression, imageminimizer and cssminimizer plugins help boost web performance.
-<!-- - Webpack was our solution to elegantly handle our numerous static assets, implement JSX, and harness ES6 in this project. -->
-
----
 
 ## Product Overview
 
 The Product Overview contains an image carousel that can be toggled by left and right arrows, along with the thumbnail track. The gallery can expand over the product information for a zoomed in view that will track the user's cursor position for dynamic zoom. Customers can toggle styles and add products to their cart.
 
-## Related Products 
+## Related Products
 Related products which present the user with products similar to the currently selected product, provided by the external API and it changes accordingly. Having carousel of cards let users navigate between the card. When a user clicks on the star icon in the upper righthand corner of the card, a modal will pop up comparing the feature of the current product and the selected product.
 
 
@@ -70,6 +65,3 @@ Selecting the “add a review” button at the bottom of the review list renders
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[QuestionsAndAnswers]: readMeAssets/QuestionAnswer.gif
-[ProductOverview]: readMeAssets/productOverview.png
