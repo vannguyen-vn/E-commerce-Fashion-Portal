@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel, Container } from 'react-bootstrap';
-
+import Background from '../images/parallax.jpg'
 
 
 const Testimonial = () => {
@@ -35,7 +35,7 @@ const Testimonial = () => {
   ]
 
   return (
-    <Carousel interval={1000} className='testimonial'>
+    <Carousel interval={1000} className='testimonial' style={{ backgroundImage: "url(" + Background + ")" }}>
       {testimonial.map((c, index) => {
         return (
           <Carousel.Item interval={5000} key={index}>
