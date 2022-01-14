@@ -12,7 +12,7 @@
 ## Project Fashion store
 
 
-<p align = center><img src='https://github.com/vannguyen-vn/E-commerce-Fashion-Portal/blob/deploy/dist/static/media/fashion-store.gif'/></p>
+<p align = center><img src='https://github.com/vannguyen-vn/E-commerce-Fashion-Portal/blob/deploy/src/images/fashion-store.gif'/></p>
 
 This is a modernized retail portal based on design specifications and requirements outlined by project stakeholders.
 
