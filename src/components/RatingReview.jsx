@@ -5,7 +5,7 @@ import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 import { avgRating, calEachRating } from './helper/avgRating.js';
 import ReviewCard from './ReviewCard';
 import AddReview from './AddReview';
-
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const RatingReview = ({ productid, product, initReviews, reviewsMeta, convertedRating, getReviews }) => {
@@ -76,6 +76,12 @@ const RatingReview = ({ productid, product, initReviews, reviewsMeta, convertedR
       </Row>
     </section>
   )
+}
+
+RatingReview.propTypes = {
+  limit: PropTypes.number,
+  reviews: PropTypes.array,
+  modalShow: PropTypes.bool
 }
 
 export default RatingReview;

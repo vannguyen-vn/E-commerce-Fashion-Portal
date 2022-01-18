@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import PropTypes from 'prop-types'
 
 const StarSelector = ({ handleChange }) => {
   const [rating, setRating] = useState(0);
@@ -30,6 +31,11 @@ const StarSelector = ({ handleChange }) => {
       })}
     </div>
   )
+}
+
+StarSelector.propTypes = {
+  rating: PropTypes.number,
+  hover: PropTypes.number
 }
 
 export default StarSelector;

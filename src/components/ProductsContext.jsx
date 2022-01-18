@@ -1,5 +1,6 @@
 import React, { useState, useEffect, createContext } from 'react';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 
 export const ProductsContext = createContext();
 
@@ -96,3 +97,15 @@ export const ProductsProvider = props => {
   );
 
 }
+
+
+ProductsProvider.propTypes = {
+  theme: PropTypes.string,
+  products: PropTypes.array,
+  isLoaded: PropTypes.bool,
+  related: PropTypes.array,
+  reviews: PropTypes.array,
+  reviewsMeta: PropTypes.object,
+  ratings: PropTypes.object,
+  product: PropTypes.object
+};

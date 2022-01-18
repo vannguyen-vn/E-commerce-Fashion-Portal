@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Container, Col, Row, DropdownButton, Dropdown, Button, ButtonGroup } from 'react-bootstrap';
 import { Carousel } from 'react-responsive-carousel';
 import Cart from './Cart';
+import PropTypes from 'prop-types';
 
 const Overview = ({ product, convertedRating, productId }) => {
 
@@ -143,6 +144,15 @@ const Overview = ({ product, convertedRating, productId }) => {
 
     </section>
   )
+}
+
+Overview.propTypes = {
+  active: PropTypes.number,
+  selectedSize: PropTypes.string,
+  selectedQuantity: PropTypes.number,
+  textBtnCart: PropTypes.string,
+  itemInCart: PropTypes.array,
+  show: PropTypes.bool
 }
 
 export default Overview;

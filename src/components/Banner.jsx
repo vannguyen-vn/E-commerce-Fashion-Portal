@@ -3,7 +3,6 @@ import { Carousel } from 'react-bootstrap'
 import banner1 from '../images/Main-Banner-2-1903x700.jpg';
 import banner2 from '../images/Main-Banner-1903x700.jpg';
 
-
 const Banner = () => {
   return (
     <Carousel variant="dark">

@@ -3,7 +3,7 @@ import { Row, Col, Modal, Button, Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { ProductsContext } from './ProductsContext';
-
+import PropTypes from 'prop-types';
 import axios from 'axios';
 
 const AddReview = (props) => {
@@ -122,5 +122,15 @@ const AddReview = (props) => {
     </Modal>
   )
 }
+
+AddReview.propTypes = {
+  hover: PropTypes.number,
+  validated: PropTypes.bool,
+  reviewer_name: PropTypes.string,
+  rating: PropTypes.number,
+  body: PropTypes.string,
+  recommend: PropTypes.bool
+}
+
 
 export default AddReview;
